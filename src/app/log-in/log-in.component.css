@@ -1,0 +1,82 @@
+
+
+.inputclassbutton {
+	background-color: #39959f;
+	border-width: 0px;
+	border-radius: 2px
+}
+
+.inputclassbutton:hover {
+	background-color: #33adff;
+}
+
+.form-horizontal {
+	display: block;
+	justify-content: center;
+	width: 50%;
+	margin: 0 auto;
+	align-content: center;
+	background-image: linear-gradient(to right, #d5edf0, #d5edf0, #94d1d8, #d5edf0, #d5edf0);
+}
+
+
+
+.gradient-custom {
+	background: linear-gradient(to right, rgb(129, 185, 223),
+		rgb(153, 204, 255), white);
+}
+
+
+
+
+
+.main {
+	background: linear-gradient(to right, rgb(129, 185, 223),
+		rgb(153, 204, 255), white);
+	position: fixed;
+	height: 100%;
+	right: 0;
+	top: 0;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+
+
+a {
+	font-size: 16px;
+	color: white;
+	text-decoration: none;
+}
+
+
+a.btn {
+	font-size: 14px;
+	background-color: #5da5d5;
+}
+
+.btnhover:hover {
+	background-color: #81b9df;
+}
+
+
+
+
+
+
+.align-right {
+	display: flex;
+	justify-content: flex-end;
+}
+
+
+.cardLogIn{
+	background-color: #004466;
+}
+
+
+
+.content{
+	height: calc(100vh - 184px) !important;
+	
+}

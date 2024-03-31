@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<head> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="javascript">
+ (function () {
+              'use strict'
+            
+              
+              var forms = document.querySelectorAll('.needs-validation')
+            
+             
+              Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                  form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                      event.preventDefault()
+                      event.stopPropagation()
+                    }
+            
+                    form.classList.add('was-validated')
+                  }, false)
+                })
+            })()
+        </script>
+</head>
+<div class="gradient-custom d-flex justify-content-center align-items-center min-vh-100 ">
+    <div class="row ">
+    
+      
+            <div class="cardLogIn card shadow-lg d-flex">
+            <div class="card-header d-flex justify-content-center align-items-center" >Registracija naloga</div>
+            <div class="card-body py-1 text-center justify-content-center " >
+                <form class="was-validated" action="POST" (submit)="createAccount()">
+                   <div class="form-group" >
+                                <label class="form-label">Ime</label> <input
+                                    type="text" id="firstName" name="firstName"
+                                    class="form-control "  required>
+                                      <div class="invalid-feedback">Please fill out this field.</div>
+                            </div>
+                            <div class="form-group position-relative">
+                                <label class="form-label">Prezime</label> <input
+                                    type="text" id="lastName" name="lastName"
+                                    class="form-control" required />
+                                    <div class="valid-tooltip">
+                                        Looks good!
+                                      </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Email</label> <input
+                                    type="email" id="email" name="email"
+                                    class="form-control" placeholder="name@mail.com" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Broj telefona</label> <input
+                                    type="text" id="phoneNumber" name="phoneNumber"
+                                    class="form-control"
+                                    />
+                                   
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Adresa</label> <input
+                                    type="text" id="address" name="address"
+                                    class="form-control "  />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Korisni&ccaron;ko ime</label> <input
+                                    type="text" id="username" name="username"
+                                    class="form-control "  />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Lozinka</label> <input
+                                    type="password " id="password" name="password"
+                                    class="form-control password"  />
+                            </div>
+                            <div class="form-group py-2 ">
+                                <button type="submit" class="btn" >Registrujte se</button>
+                            </div>
+                </form>
+            </div>
+            </div>
+         
+           
+           
+       
+    </div>
+
+</div>
