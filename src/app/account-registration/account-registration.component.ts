@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 
 @Component({
@@ -9,20 +9,30 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class AccountRegistrationComponent {
   formData: any = {};
-  public createAccountForm : FormGroup = new FormGroup({});
+
+
+  validationForm!: FormGroup;
+  submitted= false;
+
+  constructor(private router: Router, private formBuilder:FormBuilder) {
+   
+  }
+
   
-  ngOnInit(): void {
-    this.createAccountForm = this.formBuilder.group({
-      firstName: [null, Validators.required],
-      lastName: [null, Validators.required],
-    });
-  }
-  constructor(private formBuilder: FormBuilder, private router: Router) {
-
-  }
-
-  createAccount(){
  
+onSubmit(){
+this.submitted = true;
+if(this.validationForm.invalid){
+  return;
+}
+alert("Succses");
+}
+ngOnInit(){
+  this.validationForm = this.formBuilder.group({
+    firstName:['', Validators.required]
+  })
+}
+  createAccount(){
  
     this.router.navigate(['/home']);
   }

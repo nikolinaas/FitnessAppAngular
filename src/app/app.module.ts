@@ -7,6 +7,7 @@ import { LogInComponent } from './log-in/log-in.component';
 import { AccountRegistrationComponent } from './account-registration/account-registration.component';
 import { FormsModule } from '@angular/forms';
 import { HomePageComponent } from './home-page/home-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HomePageComponent } from './home-page/home-page.component';
   imports: [
     FormsModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
