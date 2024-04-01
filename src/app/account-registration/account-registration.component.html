@@ -14,45 +14,58 @@
                    <div class="form-group" >
                                 <label class="form-label">Ime</label> <input
                                     type="text" id="firstName" formControlName="firstName" [ngClass]="{'is-invalid':submitted && validationForm.controls?.['firstName']?.errors}"
-                                    class="form-control" placeholder="Ime" required>
-                                    <div class="valid-feedback">Valid Username.</div>
-                                    <div class="invalid-feedback">Please fill out this field.</div>
+                                    class="form-control" required>
+                                    <div class="invalid-feedback"> Popunite polje validnim podacima!</div>
                             </div>
-                            <div class="form-group position-relative">
+                            <div class="form-group">
                                 <label class="form-label">Prezime</label> <input
-                                    type="text" id="lastName" name="lastName"
-                                    class="form-control" required />
-                                    <div class="valid-tooltip">
-                                        Looks good!
+                                    type="text" id="lastName" formControlName="lastName"
+                                    class="form-control" [ngClass]="{'is-invalid':submitted && validationForm.controls?.['lastName']?.errors}" required />
+                                    <div class="invalid-feedback">
+                                        Popunite polje validnim podacima!
                                       </div>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Email</label> <input
-                                    type="email" id="email" name="email"
-                                    class="form-control" placeholder="name@mail.com" />
-                            </div>
+                                    type="email" id="email" formControlName="email"
+                                    class="form-control" placeholder="name@mail.com"  [ngClass]="{'is-invalid':submitted && validationForm.controls?.['email']?.errors}" required/>
+                                    <div class="invalid-feedback">
+                                        Popunite polje validnim podacima!
+                                       </div>
+                                </div>
                             <div class="form-group">
                                 <label class="form-label">Broj telefona</label> <input
-                                    type="text" id="phoneNumber" name="phoneNumber"
-                                    class="form-control"
+                                    type="text" id="phoneNumber" formControlName="phoneNumber"
+                                    class="form-control" [ngClass]="{'is-invalid':submitted && validationForm.controls?.['phoneNumber']?.errors}" pattern="[0-9]" required
                                     />
-                                   
+                                    <div class="invalid-feedback">
+                                        Popunite polje validnim podacima!
+                                       </div>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Adresa</label> <input
-                                    type="text" id="address" name="address"
-                                    class="form-control "  />
-                            </div>
+                                    type="text" id="address" formControlName="address"
+                                    class="form-control " [ngClass]="{'is-invalid':submitted && validationForm.controls?.['address']?.errors}" required />
+                                    <div class="invalid-feedback">
+                                        Popunite polje validnim podacima!
+                                       </div>
+                                </div>
                             <div class="form-group">
                                 <label class="form-label">Korisni&ccaron;ko ime</label> <input
-                                    type="text" id="username" name="username"
-                                    class="form-control "  />
-                            </div>
+                                    type="text" id="username" formControlName="username"
+                                    class="form-control "  [ngClass]="{'is-invalid':submitted && validationForm.controls?.['username']?.errors}" required/>
+                                    <div class="invalid-feedback">
+                                        Popunite polje validnim podacima!
+                                       </div>
+                                </div>
                             <div class="form-group">
                                 <label class="form-label">Lozinka</label> <input
-                                    type="password " id="password" name="password"
-                                    class="form-control password"  />
-                            </div>
+                                    type="password " id="password" formControlName="password"
+                                    class="form-control password" [ngClass]="{'is-invalid':submitted && validationForm.controls?.['password']?.errors}" required />
+                                    <div class="invalid-feedback">
+                                        Popunite polje validnim podacima!
+                                       </div>
+                                </div>
                             <div class="form-group py-2 ">
                                 <button type="submit" class="btn" >Registrujte se</button>
                             </div>
