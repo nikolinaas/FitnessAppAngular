@@ -4,6 +4,8 @@ import { Router, RouterLink } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { KorisnikRequest } from '../model/KorisnikRequest';
 import { waitForAsync } from '@angular/core/testing';
+import { NalogRequest } from '../model/NalogRequest';
+import { Nalog } from '../model/Nalog';
 
 @Component({
   selector: 'app-account-registration',
@@ -12,49 +14,63 @@ import { waitForAsync } from '@angular/core/testing';
 })
 export class AccountRegistrationComponent {
   formData: any = {};
-  firstName=new FormControl(['', Validators.required]);
-  lastName = new FormControl(['', Validators.required]);
-  email = new FormControl(['', Validators.required, Validators.email]);
-  phoneNumber= new FormControl(['', Validators.required]);
-  address= new FormControl(['', Validators.required]);
-  username= new FormControl(['', Validators.required]);
-  password= new FormControl(['', Validators.required]);
-  private sendEmailURL:string = "http://localhost:9000/api/mail/send"
+
+  private sendEmailURL:string = "http://localhost:9000/api/mail/send";
+  private createAccURL : string = "http://localhost:9000/nalozi";
+  private createUserURL :string = "http://localhost:9000/korisnici";
 
   validationForm!: FormGroup;
   submitted= false;
 
   constructor(private router: Router, private formBuilder:FormBuilder, private http:HttpClient) {
     
-      this.validationForm = this.formBuilder.group({
-        firstName: this.firstName,
-        lastName: this.lastName,
-        email: this.email,
-        phoneNumber: this.phoneNumber,
-        address: this.address,
-        username: this.username,
-        password: this.password
-      })
+    this.validationForm = this.formBuilder.group({
+      firstName :['',[Validators.required, Validators.minLength(1)]],
+  lastName :['',[Validators.required, Validators.minLength(1)]],
+  email:['', [Validators.required, Validators.minLength(1), Validators.email]],
+  phoneNumber: ['', [Validators.required, Validators.pattern("[0-9]+"), Validators.minLength(1)]],
+  address: ['', [Validators.required, Validators.minLength(1)]],
+  username:['', [Validators.required, Validators.minLength(1)]],
+  password:['', [Validators.required, Validators.minLength(1)]]
+    })
     
   }
 
-  
- 
+  ngOnInit(){
+   
+    
+  }
+
 onSubmit(){
 
-var korisnikRequest : KorisnikRequest = {
-    ime: this.validationForm.get( 'firstName')?.value,
-    prezime: this.validationForm.get( 'lastName')?.value,
-    email: this.validationForm.get( 'email')?.value,
-    brojTelefona:this.validationForm.get( 'phoneNumber')?.value,
-    adresa: this.validationForm.get( 'address')?.value,
-}
-this.submitted = true;
-if(this.validationForm.invalid){
-  console.log(korisnikRequest);
-  this.http.post(this.sendEmailURL, korisnikRequest).subscribe((data)=> {});
-}
-alert("Succses");
+if(!this.validationForm.invalid){
+  console.log("validnooooooo");
+  this.submitted = true;
+  var korisnikRequest : KorisnikRequest;
+  var nalogRequest : NalogRequest= {
+  korisnickoIme : this.validationForm.get('username')?.value,
+  lozinka : this.validationForm.get('password')?.value,
+  aktiviran : false
+ 
+  }
+  var id :number = 0;
+  this.http.post(this.createAccURL, nalogRequest).subscribe((data)=> {
+
+    korisnikRequest = {
+      ime: this.validationForm.get( 'firstName')?.value,
+      prezime: this.validationForm.get( 'lastName')?.value,
+      email: this.validationForm.get( 'email')?.value,
+      brojTelefona:this.validationForm.get( 'phoneNumber')?.value,
+      adresa: this.validationForm.get( 'address')?.value,
+      nalogIdnalog :(data as any).id
+  }
+    this.http.post(this.createUserURL, korisnikRequest).subscribe((data) => {});
+    this.http.post(this.sendEmailURL, korisnikRequest).subscribe((data)=> {});
+    alert("Nalog je kreiran, kreiranje naloga potvrdite na mail-u i aktivirajte nalog!")
+  });
+  
+}else console.log("nije validno");
+
 }
 
   createAccount(){
