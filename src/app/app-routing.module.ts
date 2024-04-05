@@ -6,8 +6,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { AsyncAction } from 'rxjs/internal/scheduler/AsyncAction';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/login' },
-  { path: 'login', component: LogInComponent },
+  { path: '', pathMatch: 'full', redirectTo: '/login/0' },
+  { path: 'login/:id', component: LogInComponent },
   { path : 'registration', component : AccountRegistrationComponent },
   { path: 'home', component: HomePageComponent}
 

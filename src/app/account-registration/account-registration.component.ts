@@ -77,6 +77,9 @@ if(!this.validationForm.invalid){
         nalogIdnalog :(data as any).id,
         aktivacioniKod : aktivKod
       }
+    var  mailReq : any = {
+        aktivacioniKod : aktivKod
+      }
       this.http.post(this.createUserURL, korisnikRequest).subscribe((data) => {});
       this.http.post(this.sendEmailURL, korisnikRequest).subscribe((data)=> {});
       alert("Nalog je kreiran, kreiranje naloga potvrdite na mail-u i aktivirajte nalog!")

@@ -25,7 +25,7 @@ export class CheckActivationcodeModalComponent {
     console.log(this.id);
   }
   close(){
-
+this.modalRef.close();
   }
 
   submit(){
@@ -34,7 +34,7 @@ export class CheckActivationcodeModalComponent {
       var kod2 : any = (data as any).aktivacioniKod;
       this.id = (data as any).id;
     if(kod1 == kod2){
-console.log("kod dobar");
+      console.log("kod dobar");
       var nalogRequest :any = {
       id: (data as any).id,
       korisnickoIme:(data as any).korisnickoIme,
@@ -44,9 +44,9 @@ console.log("kod dobar");
   
       };
       this.http.put(this.NalogByIdURL+this.id,nalogRequest).subscribe((data) => {console.log(data);})
-
+      this.close();
     }else{
-      alert("Unijeli ste neispravan aktivacioni kod! Pokusajte ponovo!");
+      alert("Unijeli ste neispravan aktivacioni kod! Pokušajte ponovo!");
     }
     });
   }
