@@ -5,5 +5,5 @@ export interface KorisnikRequest{
     brojTelefona:string | null;
     adresa: string | null;
     nalogIdnalog : number | null;
-
+    aktivacioniKod : string | null;
 }

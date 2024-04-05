@@ -10,20 +10,23 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
-
+import { CheckActivationcodeModalComponent } from './check-activationcode-modal/check-activationcode-modal.component';
+import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 @NgModule({
   declarations: [
     AppComponent,
     LogInComponent,
     AccountRegistrationComponent,
-    HomePageComponent
+    HomePageComponent,
+    CheckActivationcodeModalComponent
   ],
   imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MdbModalModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,5 +3,5 @@ export class Nalog{
     korisnickoIme: string | null | undefined;
     lozinka: string | null | undefined;
     aktiviran: boolean | false | undefined;
-
+    aktivacioniKod  :string | null | undefined;
 }

@@ -7,6 +7,7 @@ import { waitForAsync } from '@angular/core/testing';
 import { NalogRequest } from '../model/NalogRequest';
 import { Nalog } from '../model/Nalog';
 
+
 @Component({
   selector: 'app-account-registration',
   templateUrl: './account-registration.component.html',
@@ -35,14 +36,23 @@ export class AccountRegistrationComponent {
     })
     
   }
-
+  randomString() {
+    var randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var result = '';
+    for ( var i = 0; i < 16; i++ ) {
+        result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
+    }
+    return result;
+}
   ngOnInit(){
    
+    
+    console.log(this.randomString());
     
   }
 
 onSubmit(){
-
+var aktivKod = this.randomString();
 if(!this.validationForm.invalid){
   console.log("validnooooooo");
   this.submitted = true;
@@ -50,23 +60,34 @@ if(!this.validationForm.invalid){
   var nalogRequest : NalogRequest= {
   korisnickoIme : this.validationForm.get('username')?.value,
   lozinka : this.validationForm.get('password')?.value,
-  aktiviran : false
- 
+  aktiviran : false,
+  aktivacioniKod : aktivKod
   }
+ 
   var id :number = 0;
   this.http.post(this.createAccURL, nalogRequest).subscribe((data)=> {
 
-    korisnikRequest = {
-      ime: this.validationForm.get( 'firstName')?.value,
-      prezime: this.validationForm.get( 'lastName')?.value,
-      email: this.validationForm.get( 'email')?.value,
-      brojTelefona:this.validationForm.get( 'phoneNumber')?.value,
-      adresa: this.validationForm.get( 'address')?.value,
-      nalogIdnalog :(data as any).id
-  }
-    this.http.post(this.createUserURL, korisnikRequest).subscribe((data) => {});
-    this.http.post(this.sendEmailURL, korisnikRequest).subscribe((data)=> {});
-    alert("Nalog je kreiran, kreiranje naloga potvrdite na mail-u i aktivirajte nalog!")
+    if(data !== null){
+      korisnikRequest = {
+        ime: this.validationForm.get( 'firstName')?.value,
+        prezime: this.validationForm.get( 'lastName')?.value,
+        email: this.validationForm.get( 'email')?.value,
+        brojTelefona:this.validationForm.get( 'phoneNumber')?.value,
+        adresa: this.validationForm.get( 'address')?.value,
+        nalogIdnalog :(data as any).id,
+        aktivacioniKod : aktivKod
+      }
+      this.http.post(this.createUserURL, korisnikRequest).subscribe((data) => {});
+      this.http.post(this.sendEmailURL, korisnikRequest).subscribe((data)=> {});
+      alert("Nalog je kreiran, kreiranje naloga potvrdite na mail-u i aktivirajte nalog!")
+    }else{
+  
+      this.validationForm.get('username')?.setErrors({
+        notUnique: true
+      });
+      alert("Nije moguce kreirati nalog sa vec postojecim korisnicikim imenom!")
+    }
+
   });
   
 }else console.log("nije validno");

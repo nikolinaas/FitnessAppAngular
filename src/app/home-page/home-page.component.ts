@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { MdbModalService } from 'mdb-angular-ui-kit/modal';
 
 @Component({
   selector: 'app-home-page',
@@ -6,5 +9,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent {
+
+  constructor(){
+    
+  }
+
 
 }
