@@ -5,6 +5,8 @@ import { CheckActivationcodeModalComponent } from '../check-activationcode-modal
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Nalog } from '../model/Nalog';
+import {NgAlertBoxComponent, NgAlertBoxService} from "ng-alert-box-popup";
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-log-in',
@@ -23,7 +25,7 @@ private editAccountURL : string = "http://localhost:9000/nalozi/";
 private sendEmailURL:string = "http://localhost:9000/api/mail/send";
 private idOfPage : any;
 
-  constructor(private router: Router,private modalService: MdbModalService,private formBuilder:FormBuilder,private http:HttpClient,private route: ActivatedRoute) {
+  constructor(private alerts: NgAlertBoxService,private router: Router,private modalService: MdbModalService,private formBuilder:FormBuilder,private http:HttpClient,private route: ActivatedRoute) {
     this.validationForm = this.formBuilder.group({
       username :['',[Validators.required, Validators.minLength(1)]],
       password :['',[Validators.required, Validators.minLength(1)]]})
@@ -32,6 +34,7 @@ private idOfPage : any;
 
   ngOnInit(){
     this.idOfPage = this.route.snapshot.paramMap.get('id');
+   
   }
   createAccountClick(){
     this.router.navigate(['/registration']);
@@ -41,10 +44,19 @@ private idOfPage : any;
     this.router.navigate(['/home']);
   }
 
-  async logIn(loginRequest : any) {
-    
-    
-  }
+  showSuccessAlert(msg : string) {
+    swal("",msg, "success");
+}
+
+  showErrorAlert(msg : string){ 
+    swal("Greška",msg,"error");
+
+}
+
+showInfoAlert(msg  :string){
+  swal("", msg , "info");
+}
+
 
   randomString() {
     var randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -95,9 +107,11 @@ private idOfPage : any;
                 };
                 (kor as any).aktivacioniKod = actCode;
                 this.http.put(this.editAccountURL+this.nalog.id,this.nalog).subscribe((n)=>{});
-                this.http.post(this.sendEmailURL,kor).subscribe((m)=>{});
+                this.http.post(this.sendEmailURL,kor).subscribe((m)=>{
+                  this.showSuccessAlert("Nalog uspješno aktiviran!");
+                });
               } )
-              alert("Nalog nije aktiviran,na e-mail Vam je poslan novi kod za aktivaciju naloga!")
+              this.showInfoAlert("Nalog nije aktiviran,na e-mail Vam je poslan novi kod za aktivaciju naloga!")
               this.modalService.open(CheckActivationcodeModalComponent,{ data: { id: this.nalog.id }});
             }
             
@@ -106,7 +120,7 @@ private idOfPage : any;
    
         
         
-       else alert("Prijava nije moguca, nalog sa navedenim kredencijalima ne postoji!");
+       else this.showErrorAlert("Prijava nije moguća, nalog sa navedenim kredencijalima ne postoji!");
       })
   
   

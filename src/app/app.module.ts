@@ -12,13 +12,16 @@ import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { CheckActivationcodeModalComponent } from './check-activationcode-modal/check-activationcode-modal.component';
 import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
+import {NgAlertBoxComponent} from "ng-alert-box-popup";
+import { SideMenuComponent } from './side-menu/side-menu.component';
 @NgModule({
   declarations: [
     AppComponent,
     LogInComponent,
     AccountRegistrationComponent,
     HomePageComponent,
-    CheckActivationcodeModalComponent
+    CheckActivationcodeModalComponent,
+    SideMenuComponent
   ],
   imports: [
     FormsModule,

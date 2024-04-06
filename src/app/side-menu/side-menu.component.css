@@ -1,0 +1,58 @@
+.gradient-custom {
+	background: linear-gradient(to right, rgb(129, 185, 223),
+		rgb(153, 204, 255), white);
+}
+
+.side-menu{
+    height: calc(100vh - 0px);
+    width:calc(15vw - 0px);
+	background-color: #004466;
+ 
+    margin-bottom: 0px;
+    display: flex;
+}
+.navbar-brand:hover{
+    background-color: #3891be;
+}
+
+.navbar-brand {
+    color: white;
+    display: flex;
+    justify-content: center;
+    margin: 0px;
+    width: 100%;    
+}
+.navbar{
+    width: 100%;
+}
+.container-navbar{
+    color: white;
+    justify-content: center;
+    padding-left: 0px;
+    padding-right: 0px;
+    display: flex;
+    margin: 0px;
+    width: 100%;
+}
+.navbarclass{
+    width: 100%;
+    margin: 0px;
+}
+.fitness-app{
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+}
+.space {
+    display: flex;
+    height: calc(20vh - 10px);
+}
+
+.image-class{
+    height: calc(15vh - 5px);
+     width: calc(10vw - 5px);
+}
+.image-class-account{
+    height: calc(8vh - 5px);
+    width: calc(4vw - 5px);
+}

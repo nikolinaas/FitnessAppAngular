@@ -10,9 +10,18 @@ import { MdbModalService } from 'mdb-angular-ui-kit/modal';
 })
 export class HomePageComponent {
 
-  constructor(){
-    
+  private getNewsURL : string = "http://localhost:9000/home/news";
+  private getExercisesURL : string = "http://localhost:9000/home/exercises";
+
+  constructor(private http:HttpClient){
+  
   }
 
+
+  ngOnInit(){
+    this.http.get(this.getNewsURL).subscribe((data) => {
+      console.log(data);
+    });
+  }
 
 }
