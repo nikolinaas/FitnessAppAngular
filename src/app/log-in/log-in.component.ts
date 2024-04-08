@@ -108,7 +108,7 @@ showInfoAlert(msg  :string){
                 (kor as any).aktivacioniKod = actCode;
                 this.http.put(this.editAccountURL+this.nalog.id,this.nalog).subscribe((n)=>{});
                 this.http.post(this.sendEmailURL,kor).subscribe((m)=>{
-                  this.showSuccessAlert("Nalog uspješno aktiviran!");
+                 // this.showSuccessAlert("Nalog uspješno aktiviran!");
                 });
               } )
               this.showInfoAlert("Nalog nije aktiviran,na e-mail Vam je poslan novi kod za aktivaciju naloga!")

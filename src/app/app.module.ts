@@ -14,6 +14,8 @@ import { CheckActivationcodeModalComponent } from './check-activationcode-modal/
 import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 import {NgAlertBoxComponent} from "ng-alert-box-popup";
 import { SideMenuComponent } from './side-menu/side-menu.component';
+import { ShowNewsDetailsModalComponent } from './show-news-details-modal/show-news-details-modal.component';
+import { ShowExerciseDetailsModalComponent } from './show-exercise-details-modal/show-exercise-details-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +23,9 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
     AccountRegistrationComponent,
     HomePageComponent,
     CheckActivationcodeModalComponent,
-    SideMenuComponent
+    SideMenuComponent,
+    ShowNewsDetailsModalComponent,
+    ShowExerciseDetailsModalComponent
   ],
   imports: [
     FormsModule,

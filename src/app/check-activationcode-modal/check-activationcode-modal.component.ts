@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
-
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-check-activationcode-modal',
@@ -43,10 +43,13 @@ this.modalRef.close();
       aktivacioniKod : null
   
       };
-      this.http.put(this.NalogByIdURL+this.id,nalogRequest).subscribe((data) => {console.log(data);})
+      this.http.put(this.NalogByIdURL+this.id,nalogRequest).subscribe((data) => {
+        //todo dodati da iskoci showsuccess nalog uspjesno aktiviran
+        swal("","Nalog uspješno aktiviran","success");
+        console.log(data);})
       this.close();
     }else{
-      alert("Unijeli ste neispravan aktivacioni kod! Pokušajte ponovo!");
+      swal("","Unijeli ste neispravan aktivacioni kod! Pokušajte ponovo!","error");
     }
     });
   }

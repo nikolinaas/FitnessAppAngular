@@ -1,0 +1,17 @@
+<div class="moda-content modal-background" >
+    <div class="modal-header">
+        <h4 class="modal-title">Detaljnije</h4>
+        <button
+          type="button"
+          class="btn-close"
+          aria-label="Close"
+          (click)="modalRef.close()"
+        ></button>
+    </div>
+    <div class="modal-body">
+        <div class="div-title">{{news.title}}</div>
+        <div class="div-details"><b>Kategroija: </b>{{news.category}}</div>
+        <div class="div-details"><b>Opis: </b>{{news.description}}</div>
+        <div class="div-details"><b>Detaljnije na sljedećem linku -> : </b><a href="{{news.link}}">{{news.link}}</a></div>
+    </div>
+</div>

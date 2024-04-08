@@ -9,15 +9,28 @@
         <div class="row-container space-cards d-flex align-items-center">
             <label class="label-edit">Najnovije vijesti iz svijeta fitnesa</label> 
         </div>
-        <div class="row-container div-content p-2">
+        <div class=" div-content p-2 px-2" >
+          <div class="news-card " *ngFor="let n of news">
+        <div class="title-div "> {{n.title}}</div>
+       <div class="description-div">{{n.description}}</div>
+       <div class="button-details-div justify-content-end"> <button (click)="showNewsDetails(n)" class="button-details">Detaljnije</button></div>
+          </div>
           
         </div>
         <div class="row-container space-cards d-flex align-items-center">
             <label class="label-edit">Dnevni prijedlog vježbi</label> 
         </div>
     
-        <div class="row-container div-content p-2">
-          
+        <div class="div-content px-2">
+            <div class="news-card " *ngFor="let e of exercises">
+                <div class="name-div "> {{e.name}}</div>
+               <div class="muscle-div"><b>Muscle:</b> {{e.muscle}}</div>
+               <div class="muscle-div"><b>Type:</b> {{e.type}}</div>
+               <div class="muscle-div"><b>{{e.equipment}} </b></div>
+               <div class="muscle-div"><b>Difficulty: </b>{{e.difficulty}}</div>
+               <div class="instructions-div"><b>Instructions: </b>{{e.instructions}}</div>
+               <div class="button-details-div justify-content-end"> <button (click)="showExerciseDetails(e)" class="button-details">Detaljnije</button></div>
+                  </div>
         </div>
      </div>
     </div>
