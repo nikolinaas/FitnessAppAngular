@@ -22,7 +22,7 @@
         </div>
     
         <div class="div-content px-2">
-            <div class="news-card " *ngFor="let e of exercises">
+               <div class="news-card " *ngFor="let e of exercises">
                 <div class="name-div "> {{e.name}}</div>
                <div class="muscle-div"><b>Muscle:</b> {{e.muscle}}</div>
                <div class="muscle-div"><b>Type:</b> {{e.type}}</div>
@@ -30,7 +30,11 @@
                <div class="muscle-div"><b>Difficulty: </b>{{e.difficulty}}</div>
                <div class="instructions-div"><b>Instructions: </b>{{e.instructions}}</div>
                <div class="button-details-div justify-content-end"> <button (click)="showExerciseDetails(e)" class="button-details">Detaljnije</button></div>
-                  </div>
+                </div>
+                <div class="justify-content-center d-flex" *ngIf="!loggedIn">
+                    Sadržaj dostupan samo prijavljenim korisnicima!
+                </div>
+         
         </div>
      </div>
     </div>

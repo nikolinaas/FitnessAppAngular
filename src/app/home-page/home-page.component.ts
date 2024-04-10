@@ -19,11 +19,14 @@ export class HomePageComponent {
 
    news :any = [];
    exercises : any = [];
+   loggedIn : boolean = false;
    constructor(private http:HttpClient, private modalService: MdbModalService){
   
      
 
   }
+
+
 
 
   ngOnInit(){
@@ -36,12 +39,16 @@ console.log(this.news[0]);
   
     });
 
-    this.http.get(this.getExercisesURL).subscribe((data) => {
+    if(sessionStorage.getItem("isLoggedIn") == 'true'){
+      this.loggedIn = true;
+      this.http.get(this.getExercisesURL).subscribe((data) => {
 
-      this.exercises = <Vjezba[]>JSON.parse(JSON.stringify(data));
-      console.log(this.exercises);
-
-    });
+        this.exercises = <Vjezba[]>JSON.parse(JSON.stringify(data));
+        console.log(this.exercises);
+  
+      });
+    }else this.loggedIn = false;
+   
   }
 
   showNewsDetails(novost : any) {

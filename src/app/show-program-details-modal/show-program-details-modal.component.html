@@ -1,0 +1,32 @@
+<div class="row-container">
+    <app-side-menu></app-side-menu>
+    <div class="home">
+        <div class="row-container space-up"></div>
+        <div class="row-container horizontal-line justify-content-center align-items-center d-flex">
+           <label>Pregled programa</label>
+        </div>
+        <div class="content p-2">
+
+            <div class="div-buttons justify-content-end">
+                <button class="btn-primary">b</button>
+            </div>
+            <div class="container-fluid "  >
+                <div class="row card-content" [ngStyle]="{'background-image' : 'url( ' + slika + ')' }" >
+                    <div class="div-program-card">
+                        <div class="div-title">{{program.nazivPrograma}}</div>
+                        <div class="div-details"><b>Opis: </b>{{program.opis}}</div>
+                        <div class="div-details-location"><b>{{program.uzivo?uzivo:online}}</b></div>
+                        <div class="div-details"><b>Cijena: </b>{{program.cijena}} KM/mjesecno</div>
+                        <div class="div-details"><b>Nivo težine: </b>{{program.nivoTezine}}</div>
+                        <div class="div-details"><b>Trajanje: </b>{{program.trajanje}}</div>
+                        <div class="div-details"><b>Lokacija odrzavnja: </b>{{program.lokacijaOdrzavanjaNazivLokacije}}</div>
+                        <div class="div-details"><b>Kategorija: </b>{{program.kategorijaNazivKategorija}}</div>
+                        <div class="div-details"><b>Opis kategorije: </b>{{program.kategorijaOpisKategorije}}</div>    
+                    </div>
+                </div>
+            </div>
+
+        
+        </div>
+    </div>
+</div>

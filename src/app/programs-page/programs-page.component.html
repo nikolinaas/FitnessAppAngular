@@ -1,0 +1,43 @@
+<div class="row-container">
+    <app-side-menu></app-side-menu>
+    <div class="home">
+        <div class="row-container space-up"></div>
+        <div class="row-container horizontal-line justify-content-center align-items-center d-flex">
+           <label>Programi</label>
+        </div>
+        <div class="content p-2">
+            <div class="div-buttons justify-content-end">
+                <button class="btn-primary">b</button>
+            </div>
+            <div class="container-fluid ">
+                <div class="row card-content" >
+
+                    <div class="card" *ngFor="let p of programss">
+                      <div class="card-header">
+                        {{p.nazivPrograma}}
+                      </div> 
+                      <div class="row card-body">
+                        <div class="card-contentOfProgram ">
+                            <div class="attribute"><b>Nivo:</b> {{p.nivoTezine}}</div>
+                            <div class="attribute"><b>Kategorija:</b> {{p.kategorijaNazivKategorija}}</div>
+                            <div class="attribute"><b>Cijena:</b> {{p.cijena}} KM/mjesecno</div>
+                            <div class="attribute"><b>Lokacija:</b> {{p.lokacijaOdrzavanjaNazivLokacije}}</div>
+                            <div class="attribute descritpion-attribute"><b>Opis:</b> {{p.opis}}</div>
+                            <div class="attribute-details"><a (click)="showProgramDetails(p)"><u>Detaljnije</u></a></div>
+                        </div>
+                        <div class="image-container justify-content-end">
+                            <img class="img-class justify-content-end d-flex"  src="{{GetImage(p.slikaId)}}" id="photo-id"/>
+                        </div>
+                        
+                      </div> 
+                    </div>
+                    
+                 
+                
+                </div>
+               
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -4,12 +4,25 @@ import { LogInComponent } from './log-in/log-in.component';
 import { AccountRegistrationComponent } from './account-registration/account-registration.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AsyncAction } from 'rxjs/internal/scheduler/AsyncAction';
+import { ProgramsPageComponent } from './programs-page/programs-page.component';
+import { CategoriesPageComponent } from './categories-page/categories-page.component';
+import { AccountPageComponent } from './account-page/account-page.component';
+import { MessagesPageComponent } from './messages-page/messages-page.component';
+import { ActivityLogPageComponent } from './activity-log-page/activity-log-page.component';
+import { IsLoggedinService } from './is-loggedin.service';
+import { ShowProgramDetailsModalComponent } from './show-program-details-modal/show-program-details-modal.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/login/0' },
   { path: 'login/:id', component: LogInComponent },
   { path : 'registration', component : AccountRegistrationComponent },
-  { path: 'home', component: HomePageComponent}
+  { path: 'home', component: HomePageComponent},
+  { path: 'programs', component: ProgramsPageComponent},
+  { path: 'categories', component: CategoriesPageComponent, canActivate : [IsLoggedinService]},
+  { path: 'account', component: AccountPageComponent, canActivate : [IsLoggedinService]},
+  { path: 'messages', component: MessagesPageComponent, canActivate : [IsLoggedinService]},
+  { path: 'activitylogs', component: ActivityLogPageComponent, canActivate : [IsLoggedinService]},
+  { path: 'programs/:id', component: ShowProgramDetailsModalComponent}
 
 ];
 

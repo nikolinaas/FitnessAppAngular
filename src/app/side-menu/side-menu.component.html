@@ -11,23 +11,23 @@
            
         <div class="container-navbar container-fluid">
             
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" (click)="clickHome()">
             
            Početna
           </a>
-          <a class="navbar-brand " href="#">
+          <a class="navbar-brand " (click)="clickPrograms()">
             
            Programi
           </a>
-          <a class="navbar-brand" href="#">
+          <a *ngIf="loggedIn" id="activityLog" [name]="activityLog" class="navbar-brand"  (click)="clickActivityJournal()">
      
             Dnevnik aktivnosti
           </a>
-          <a class="navbar-brand" href="#">
+          <a *ngIf="loggedIn" class="navbar-brand" (click)="clickMessages()">
            
             Pošalji poruku
           </a>
-          <a class="navbar-brand" href="#">
+          <a *ngIf="loggedIn" class="navbar-brand"  (click)="clickCategories()">
        
             Kategorije
           </a>
@@ -39,12 +39,12 @@
         </div>
         <div class="container-navbar container-fluid">
             
-            <a class="navbar-brand justify-content-center align-items-center d-flex" href="#">
+            <a class="navbar-brand justify-content-center align-items-center d-flex" *ngIf="loggedIn"  (click)="clickAccount()">
                 <div class="logo-div  d-flex justify-content-center ">
                     <img src="assets/accountlogo.png" class="image-class-account">
                 </div>
             </a>
-            <a class="navbar-brand justify-content-center align-items-center" href="#">
+            <a *ngIf="loggedIn" class="navbar-brand justify-content-center align-items-center" >
               <img src="assets/logout.png" height="20px" width="20px">
             Odjavi se
             </a></div>

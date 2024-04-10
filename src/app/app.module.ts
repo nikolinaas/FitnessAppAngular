@@ -16,6 +16,12 @@ import {NgAlertBoxComponent} from "ng-alert-box-popup";
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { ShowNewsDetailsModalComponent } from './show-news-details-modal/show-news-details-modal.component';
 import { ShowExerciseDetailsModalComponent } from './show-exercise-details-modal/show-exercise-details-modal.component';
+import { ProgramsPageComponent } from './programs-page/programs-page.component';
+import { CategoriesPageComponent } from './categories-page/categories-page.component';
+import { MessagesPageComponent } from './messages-page/messages-page.component';
+import { AccountPageComponent } from './account-page/account-page.component';
+import { ActivityLogPageComponent } from './activity-log-page/activity-log-page.component';
+import { ShowProgramDetailsModalComponent } from './show-program-details-modal/show-program-details-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +31,13 @@ import { ShowExerciseDetailsModalComponent } from './show-exercise-details-modal
     CheckActivationcodeModalComponent,
     SideMenuComponent,
     ShowNewsDetailsModalComponent,
-    ShowExerciseDetailsModalComponent
+    ShowExerciseDetailsModalComponent,
+    ProgramsPageComponent,
+    CategoriesPageComponent,
+    MessagesPageComponent,
+    AccountPageComponent,
+    ActivityLogPageComponent,
+    ShowProgramDetailsModalComponent
   ],
   imports: [
     FormsModule,

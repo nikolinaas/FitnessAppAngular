@@ -1,0 +1,34 @@
+.row-container {
+    display: flex;
+    flex-direction: row;
+    
+}
+.home{
+    background: linear-gradient(to right, rgb(129, 185, 223),
+    rgb(153, 204, 255), white);
+    width: calc(85vw - 0px);
+}
+
+.space-up {
+    height: calc(5vh - 0px);
+}
+.horizontal-line {
+    background-color: #004466;
+    height: calc(10vh - 0px);
+    color: white;
+    font-size: 24px;
+}
+.div-content {
+    overflow-x: auto;
+    position: relataive;
+    overflow-y: hidden;
+    white-space: nowrap;
+    border-radius: 10px;
+    border-color: #004466;
+    border-width: 2px;
+    border-style: solid;
+    height: calc(35vh - 0px);
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+  
+}

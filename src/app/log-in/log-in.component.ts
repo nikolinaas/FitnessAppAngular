@@ -89,6 +89,8 @@ showInfoAlert(msg  :string){
           };
     
           if(this.nalog.aktiviran){
+            sessionStorage.setItem("isLoggedIn",'true');
+            sessionStorage.setItem("userId", (data as any).id);
             this.router.navigate(['/home']);
           }else{
             if(this.idOfPage==1){
