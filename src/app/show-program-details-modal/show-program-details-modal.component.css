@@ -59,7 +59,9 @@
 }
 .div-buttons{
     float: right;
-    justify-content: end;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-bottom: 10px;
     height: calc(10vh - 0px);
     width: 100%;
     margin-bottom: 5px;
@@ -107,4 +109,24 @@
     background-color: #004466;
     border-radius: 10px;
 
+  }
+  .btn-class {
+    
+    background-color: #004466;
+    color: white;
+    border-radius: 10px;
+    border-width: 0px;
+}
+.btn-class:hover {
+    background-color: #2097d3;
+
+}
+.image-class-search { 
+    width: 30px;
+    height: 30px;
+  }
+.row-container-messages {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
   }

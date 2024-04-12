@@ -5,6 +5,7 @@ import { MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { Program } from '../model/Program';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ShowProgramDetailsModalComponent } from '../show-program-details-modal/show-program-details-modal.component';
+import { CreateProgramModalComponent } from '../create-program-modal/create-program-modal.component';
 
 @Component({
   selector: 'app-programs-page',
@@ -35,8 +36,7 @@ export class ProgramsPageComponent {
   }
 
   public GetImage(id : any) : any{
-    let image = this.downloadImage(id)
-    console.log(image);
+    let image = this.downloadImage(id);
     return image;
   }
   public downloadImage(id: any): string{
@@ -46,5 +46,9 @@ export class ProgramsPageComponent {
   showProgramDetails(program : any){
     var id : any = program.id
     this.router.navigate(['/programs',program.id]);
+  }
+
+  createProgramClick(){
+    this.modalService.open(CreateProgramModalComponent);
   }
 }

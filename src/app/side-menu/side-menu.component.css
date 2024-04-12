@@ -17,10 +17,9 @@
 
 .navbar-brand {
     color: white;
-    display: flex;
-    justify-content: center;
-    margin: 0px;
+    align-items: center;
     width: 100%;    
+    margin: 0px;
 }
 .navbar{
     width: 100%;

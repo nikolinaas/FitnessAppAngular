@@ -11,24 +11,24 @@
            
         <div class="container-navbar container-fluid">
             
-          <a class="navbar-brand" (click)="clickHome()">
-            
+          <a class="navbar-brand justify-content-center align-items-center d-flex" (click)="clickHome()">
+            <img  src="assets/home.png" height="30px" width="30px">
            Početna
           </a>
-          <a class="navbar-brand " (click)="clickPrograms()">
-            
+          <a class="navbar-brand justify-content-center align-items-center d-flex" (click)="clickPrograms()">
+            <img  src="assets/programs.png" height="30px" width="30px">
            Programi
           </a>
-          <a *ngIf="loggedIn" id="activityLog" [name]="activityLog" class="navbar-brand"  (click)="clickActivityJournal()">
-     
+          <a *ngIf="loggedIn" id="activityLog" [name]="activityLog" class="navbar-brand justify-content-center align-items-center d-flex"  (click)="clickActivityJournal()">
+            <img  src="assets/heartrate.png" height="30px" width="30px">
             Dnevnik aktivnosti
           </a>
-          <a *ngIf="loggedIn" class="navbar-brand" (click)="clickMessages()">
-           
+          <a *ngIf="loggedIn" class="navbar-brand justify-content-center align-items-center d-flex" (click)="clickMessages()">
+            <img  src="assets/messages.png" height="30px" width="30px">
             Pošalji poruku
           </a>
-          <a *ngIf="loggedIn" class="navbar-brand"  (click)="clickCategories()">
-       
+          <a *ngIf="loggedIn" class="navbar-brand justify-content-center align-items-center d-flex"  (click)="clickCategories()">
+            <img  src="assets/gymmember.png" height="30px" width="30px">
             Kategorije
           </a>
         </div>
@@ -44,7 +44,7 @@
                     <img src="assets/accountlogo.png" class="image-class-account">
                 </div>
             </a>
-            <a *ngIf="loggedIn" class="navbar-brand justify-content-center align-items-center" >
+            <a *ngIf="loggedIn" class="navbar-brand justify-content-center align-items-center d-flex" >
               <img src="assets/logout.png" height="20px" width="20px">
             Odjavi se
             </a></div>

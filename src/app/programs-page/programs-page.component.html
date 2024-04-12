@@ -6,8 +6,18 @@
            <label>Programi</label>
         </div>
         <div class="content p-2">
-            <div class="div-buttons justify-content-end">
-                <button class="btn-primary">b</button>
+            <div class="div-buttons row-container d-flex  justify-content-space-between">
+                <div class="row-container-search">
+                    <input type="text" class="input" id="inputPassword2" placeholder="Naziv programa">
+                    <button class="btn-primary btn-class">
+                        <img src="assets/search.png" class="image-class-search">
+                        Trazi</button>
+                </div>
+                
+                <button class="btn-primary btn-class" (click)="createProgramClick()">
+                    <img src="assets/add.png" class="image-class-search">
+                    Dodaj novi program</button>
+               
             </div>
             <div class="container-fluid ">
                 <div class="row card-content" >
