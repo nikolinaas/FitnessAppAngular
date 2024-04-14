@@ -11,18 +11,24 @@ import { MessagesPageComponent } from './messages-page/messages-page.component';
 import { ActivityLogPageComponent } from './activity-log-page/activity-log-page.component';
 import { IsLoggedinService } from './is-loggedin.service';
 import { ShowProgramDetailsModalComponent } from './show-program-details-modal/show-program-details-modal.component';
+import { MyProgramsComponent } from './my-programs/my-programs.component';
+import { ShowProgramsMessagesComponent } from './show-programs-messages/show-programs-messages.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/login/0' },
   { path: 'login/:id', component: LogInComponent },
   { path : 'registration', component : AccountRegistrationComponent },
   { path: 'home', component: HomePageComponent},
-  { path: 'programs', component: ProgramsPageComponent},
+  { path: 'programs', component: ProgramsPageComponent },
   { path: 'categories', component: CategoriesPageComponent, canActivate : [IsLoggedinService]},
   { path: 'account', component: AccountPageComponent, canActivate : [IsLoggedinService]},
   { path: 'messages', component: MessagesPageComponent, canActivate : [IsLoggedinService]},
   { path: 'activitylogs', component: ActivityLogPageComponent, canActivate : [IsLoggedinService]},
-  { path: 'programs/:id', component: ShowProgramDetailsModalComponent}
+  { path: 'programs/:id', component: ShowProgramDetailsModalComponent },
+  { path: 'myPrograms', component: MyProgramsComponent, canActivate : [IsLoggedinService]},
+  { path: 'programs/messages/:id', component:ShowProgramsMessagesComponent, canActivate : [IsLoggedinService]}
+
+
 
 ];
 

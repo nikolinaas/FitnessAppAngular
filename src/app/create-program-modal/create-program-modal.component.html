@@ -52,9 +52,9 @@
                      <div class="form-group py-1">
                          
                          <div class="dropdown">
-                            <label class="form-label px-1">Lokacija održavanja: </label>
-                            <select id="location" #teams (change)="getSelectedLocation()"  class="select-class" >
-                                <option *ngFor="let c of categories" >{{c.nazivKategorija}} : {{c.opisKategorije}}</option>
+                            <label class="form-label px-1">Kategorija: </label>
+                            <select id="category" #teams (change)="getSelectedCategory($event)"  class="select-class">
+                                <option *ngFor="let c of categories" [value]='c.idkategorija'>{{c.nazivKategorija}} : {{c.opisKategorije}}</option>
                             </select>
                           </div>
                              <div class="invalid-feedback">
@@ -64,9 +64,9 @@
                          <div class="form-group py-1">
                          
                             <div class="dropdown">
-                               <label class="form-label px-1">Kategorija programa: </label>
-                               <select id="category" #teams (change)="getSelectedLocation()" class="select-class">
-                                   <option *ngFor="let l of locations">{{l.nazivLokacije}}</option>
+                               <label class="form-label px-1">Lokacija odrzavanja: </label>
+                               <select id="location" #teams (change)="getSelectedLocation($event)" class="select-class">
+                                   <option *ngFor="let l of locations" value="l.id ">{{l.nazivLokacije}}</option>
                                </select>
                              </div>
                                 <div class="invalid-feedback">
@@ -74,20 +74,20 @@
                                    </div>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="online" id="online" >
+                                <input class="form-check-input" type="radio" name="online" id="online"  (change)="onItemChangeIsOnline($event.target)">
                                 <label class="form-check-label" for="flexRadioDefault1">
                                   Online
                                 </label>
                               </div>
                               <div class="form-check">
-                                <input class="form-check-input" type="radio" name="live" id="live" >
+                                <input class="form-check-input" type="radio" name="online" id="live" (change)="onItemChangeIsLive($event.target)">
                                 <label class="form-check-label" for="flexRadioDefault1">
                                   Uživo
                                 </label>
                               </div>
                               <div class="input-group d-flex align-items-center">
                                 <label class="input px-1" for="inputGroupFile01">Dodajte sliku </label>
-                                <input type="file" class="form-control" id="image">
+                                <input type="file" class="form-control" id="image" (change)="onFileUpload($event)">
                               </div>
                      <div class="form-group py-2 ">
                          <button type="submit" class="btn btn-primary" >Kreiraj program</button>

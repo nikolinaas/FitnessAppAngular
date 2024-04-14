@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { Program } from '../model/Program';
+import { ParticipateInProgramModalComponent } from '../participate-in-program-modal/participate-in-program-modal.component';
 
 @Component({
   selector: 'app-show-program-details-modal',
@@ -37,4 +38,10 @@ export class ShowProgramDetailsModalComponent {
     return this.downloadImgUrl + id;
   }
 
+  participateInProgram(){
+    this.modalService.open(ParticipateInProgramModalComponent,{ data: { programId: this.programId }});
+  }
+  showProgramsMessages(){
+    this.router.navigate(['programs/messages/',this.programId]);
+  }
 }

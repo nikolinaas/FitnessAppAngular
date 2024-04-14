@@ -23,6 +23,10 @@ import { AccountPageComponent } from './account-page/account-page.component';
 import { ActivityLogPageComponent } from './activity-log-page/activity-log-page.component';
 import { ShowProgramDetailsModalComponent } from './show-program-details-modal/show-program-details-modal.component';
 import { CreateProgramModalComponent } from './create-program-modal/create-program-modal.component';
+import { ParticipateInProgramModalComponent } from './participate-in-program-modal/participate-in-program-modal.component';
+import { MyProgramsComponent } from './my-programs/my-programs.component';
+import { ShowProgramsMessagesComponent } from './show-programs-messages/show-programs-messages.component';
+import { NewProgramsMessageModalComponent } from './new-programs-message-modal/new-programs-message-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +43,11 @@ import { CreateProgramModalComponent } from './create-program-modal/create-progr
     AccountPageComponent,
     ActivityLogPageComponent,
     ShowProgramDetailsModalComponent,
-    CreateProgramModalComponent
+    CreateProgramModalComponent,
+    ParticipateInProgramModalComponent,
+    MyProgramsComponent,
+    ShowProgramsMessagesComponent,
+    NewProgramsMessageModalComponent
   ],
   imports: [
     FormsModule,

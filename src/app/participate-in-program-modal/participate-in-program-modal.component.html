@@ -1,0 +1,74 @@
+<div class="moda-content modal-background">
+    <div class="modal-header">
+        <h4 class="modal-title">Ucestvuj na programu</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close()"></button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="myGroupPayPal" (submit)="onSubmit()">
+
+            <div class="form-group py-1">
+
+                <div class="dropdown">
+                    <label class="form-label px-1">Izaberite način plaćanja: </label>
+                    <select id="category" #teams (change)="getSelectedPaying($event)" class="select-class">
+                        <option *ngFor="let p of payingMethods" [value]='p.id'>{{p.naziv}} </option>
+                    </select>
+                </div>
+
+            </div>
+
+
+
+
+            <div class="tab-content" *ngIf="isCardPaying">
+                <div class="tab-pane fade show active" id="visa" role="tabpanel" aria-labelledby="visa-tab">
+                    <div class="mt-4 mx-4">
+                        <div class="text-center">
+                            <h5>Credit card</h5>
+                        </div>
+                        <div class="form mt-3">
+                            <div class="inputbox"> <input type="text" name="name" class="form-control"
+                                    required="required"> <span>Cardholder Name</span> </div>
+                            <div class="inputbox"> <input type="text" name="name" min="1" max="999" class="form-control"
+                                    required="required"> <span>Card Number</span> <i class="fa fa-eye"></i> </div>
+                            <div class="d-flex flex-row">
+                                <div class="inputbox"> <input type="text" name="name" min="1" max="999"
+                                        class="form-control" required="required"> <span>Expiration Date</span>
+                                </div>
+                                <div class="inputbox"> <input type="text" name="name" min="1" max="999"
+                                        class="form-control" required="required"> <span>CVV</span> </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+
+            <div class="tab-content" *ngIf="isPayPal">
+                <div class="tab-pane fade show active" id="visa" role="tabpanel" >
+                    <div class="mt-4 mx-4">
+                        <div class="text-center">
+                            <h5>PayPal</h5>
+                        </div>
+                        <div class="form mt-3">
+                            <div class="inputbox"> <input type="text" name="name" class="form-control"
+                                    required="required"> <span>PayPal email</span> </div>
+                           
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-group py-2 ">
+                <button type="submit" class="btn btn-primary">Učestvuj na programu</button>
+            </div>
+        </form>
+    </div>
+</div>

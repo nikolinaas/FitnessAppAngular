@@ -8,44 +8,51 @@ import { MdbModalService } from 'mdb-angular-ui-kit/modal';
   templateUrl: './side-menu.component.html',
   styleUrls: ['./side-menu.component.css']
 })
-export class SideMenuComponent{
+export class SideMenuComponent {
 
-  loggedIn : boolean = false ;
-activityLog: any;
+  loggedIn: boolean = false;
+  activityLog: any;
 
-  constructor(private router: Router,private modalService: MdbModalService,private http:HttpClient,private route: ActivatedRoute){}
+  constructor(private router: Router, private modalService: MdbModalService, private http: HttpClient, private route: ActivatedRoute) { }
 
 
-  ngOnInit(){
-     if(sessionStorage.getItem("isLoggedIn") == 'true'){
-        this.loggedIn = true;
-     }else this.loggedIn = false;
+  ngOnInit() {
+    if (sessionStorage.getItem("isLoggedIn") == 'true') {
+      this.loggedIn = true;
+    } else this.loggedIn = false;
 
   }
 
-  clickHome(){
-this.router.navigate(['/home']);
+  clickHome() {
+    this.router.navigate(['/home']);
   }
-  clickPrograms(){
+  clickPrograms() {
     this.router.navigate(['/programs']);
   }
 
-  clickActivityJournal(){
+  clickActivityJournal() {
     this.router.navigate(['/activitylogs']);
   }
 
-  clickMessages(){
+  clickMessages() {
     this.router.navigate(['/messages']);
   }
-  clickCategories(){
+  clickCategories() {
     this.router.navigate(['/categories']);
   }
 
-  clickAccount(){
+  clickAccount() {
     this.router.navigate(['/account']);
   }
 
-  clickLogOut(){
+  clickLogOut() {
+    this.router.navigate(['/login/0']);
+    sessionStorage.setItem("isLoggedIn", "false");
+    sessionStorage.setItem("userId", "0");
 
+  }
+
+  clickMyPrograms() {
+    this.router.navigate(['/myPrograms'])
   }
 }

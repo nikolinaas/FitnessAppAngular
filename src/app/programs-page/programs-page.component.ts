@@ -6,6 +6,7 @@ import { Program } from '../model/Program';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ShowProgramDetailsModalComponent } from '../show-program-details-modal/show-program-details-modal.component';
 import { CreateProgramModalComponent } from '../create-program-modal/create-program-modal.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-programs-page',
@@ -19,6 +20,7 @@ export class ProgramsPageComponent {
   private getProgramsURL : string = "http://localhost:9000/programs";
   private getImageURL : string = "http://localhost:9000/programs/image/6";
   private downloadImgUrl = "http://localhost:9000/images/download/";
+  private uploadImgUrl = "http://localhost:9000/images";
   programImageUrl: any ;
   constructor(private router: Router,private modalService: MdbModalService,private http:HttpClient,private route: ActivatedRoute,private sanitizer: DomSanitizer) {
 
@@ -43,10 +45,12 @@ export class ProgramsPageComponent {
 
     return this.downloadImgUrl + id;
   }
+ 
   showProgramDetails(program : any){
     var id : any = program.id
     this.router.navigate(['/programs',program.id]);
   }
+
 
   createProgramClick(){
     this.modalService.open(CreateProgramModalComponent);

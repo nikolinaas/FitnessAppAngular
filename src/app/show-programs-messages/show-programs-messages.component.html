@@ -1,0 +1,37 @@
+<div class="row-container">
+    <app-side-menu></app-side-menu>
+    <div class="home">
+        <div class="row-container space-up"></div>
+        <div class="row-container horizontal-line justify-content-center align-items-center d-flex">
+           <label>Poruke</label>
+        </div>
+        <div class="content p-2">
+            <div class="container-fluid "  >
+                <div class="row card-content-messages">
+                    <div class="card" *ngFor="let c of messages" >
+                        <div class="card-header"> {{c.korisnikIme}}</div>
+                        <div class="card-content">
+                            <div class="comment-content">
+                                {{c.tekstPitanja}}
+                            </div>
+                            <div >Odgovori : 
+                                <div *ngFor="let a of c.odgovori">
+                               {{a.korisnikIme}} {{a.korisnikPrezime}}: {{a.odgovorText}}
+                                </div>
+                            </div>
+                            <form [formGroup]="myGroup" (submit)="onSubmit(c.id)">
+                                <div class="card-body  row-container">
+                               
+                                    <textarea formControlName="commentContent" id="commentAnswer" class="form-control" placeholder="Odgovori na komentar" ></textarea><button class="btn-class" >Objavi</button>
+                                
+                                </div>
+                            </form>
+                            
+                        </div>
+                    </div>
+                    
+
+                </div>
+        </div>
+    </div>
+</div>
