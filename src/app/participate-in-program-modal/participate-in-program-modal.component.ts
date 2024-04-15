@@ -51,7 +51,8 @@ console.log((data as any).id);
         korisnikId : (data as any).id,
         programIdProgram : this.programId,
         nacinPlacanjaIdnacinPlacanja : this.payingMethodId,
-        instruktor : false
+        instruktor : false,
+        aktivno : true
   
       }
       this.http.post(this.postParticipationsURL,participation).subscribe((data) => {

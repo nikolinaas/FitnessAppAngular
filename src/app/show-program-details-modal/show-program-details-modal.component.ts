@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { Program } from '../model/Program';
 import { ParticipateInProgramModalComponent } from '../participate-in-program-modal/participate-in-program-modal.component';
+import { AddCommentModalComponent } from '../add-comment-modal/add-comment-modal.component';
 
 @Component({
   selector: 'app-show-program-details-modal',
@@ -17,6 +18,7 @@ export class ShowProgramDetailsModalComponent {
   online : any = "ONLINE";
    programId : any;
    slika : any;
+   getUserByccIdURL : string = "http://localhost:9000/korisnici/nalog/";
   private downloadImgUrl = "http://localhost:9000/images/download/";
    private getProgramByIdURL :string  = "http://localhost:9000/programs/";
   constructor(private modalService: MdbModalService,private router: Router,private http:HttpClient,private route: ActivatedRoute){
@@ -43,5 +45,21 @@ export class ShowProgramDetailsModalComponent {
   }
   showProgramsMessages(){
     this.router.navigate(['programs/messages/',this.programId]);
+  }
+  addComment(){
+    var userId = sessionStorage.getItem("userId");
+   
+
+    this.http.get(this.getUserByccIdURL + userId).subscribe((data) => {
+
+      var datas = {
+        programId : this.programId,
+        userId : (data as any).id
+      }
+      this.modalService.open(AddCommentModalComponent, {data : { datas: datas} });
+
+    })
+
+    
   }
 }

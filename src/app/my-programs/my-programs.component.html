@@ -6,12 +6,24 @@
            <label>Moji programi</label>
         </div>
         <div class="content p-2">
+            <div class="div-buttons row-container d-flex  justify-content-space-between">
+                <div class="row-container-search">
+                    <input type="text" class="input" id="inputPassword2" placeholder="Naziv programa">
+                    <button class="btn-primary btn-class">
+                        <img src="assets/search.png" class="image-class-search">
+                        Trazi</button>
+                </div>
+                
+               
+            </div>
             <div class="container-fluid ">
                 <div class="row card-content" >
 
-                    <div class="card" *ngFor="let p of programs">
-                      <div class="card-header">
+                    <div class="card" *ngFor="let p of programsActive">
+                      <div class="card-header space-beetwen d-flex">
                         {{p.nazivPrograma}}
+                        <button class="btnActive">Aktivan</button>
+                        <button class="btn-class" (click)="deactivateProgram(p.id)">Završi program</button>
                       </div> 
                       <div class="row card-body">
                         <div class="card-contentOfProgram ">
@@ -28,6 +40,26 @@
                         
                       </div> 
                     </div>
+                    <div class="card" *ngFor="let p of programsUnctive">
+                        <div class="card-header space-beetwen">
+                          {{p.nazivPrograma}}
+                          <button class="btnUnActive">Neaktivan</button>
+                        </div> 
+                        <div class="row card-body">
+                          <div class="card-contentOfProgram ">
+                              <div class="attribute"><b>Nivo:</b> {{p.nivoTezine}}</div>
+                              <div class="attribute"><b>Kategorija:</b> {{p.kategorijaNazivKategorija}}</div>
+                              <div class="attribute"><b>Cijena:</b> {{p.cijena}} KM/mjesecno</div>
+                              <div class="attribute"><b>Lokacija:</b> {{p.lokacijaOdrzavanjaNazivLokacije}}</div>
+                              <div class="attribute descritpion-attribute"><b>Opis:</b> {{p.opis}}</div>
+                              <div class="attribute-details"><a (click)="showProgramDetails(p)"><u>Detaljnije</u></a></div>
+                          </div>
+                          <div class="image-container justify-content-end">
+                              <img class="img-class justify-content-end d-flex"  src="{{GetImage(p.slikaId)}}" id="photo-id"/>
+                          </div>
+                          
+                        </div> 
+                      </div>
                     
                  
                 

@@ -27,6 +27,7 @@ import { ParticipateInProgramModalComponent } from './participate-in-program-mod
 import { MyProgramsComponent } from './my-programs/my-programs.component';
 import { ShowProgramsMessagesComponent } from './show-programs-messages/show-programs-messages.component';
 import { NewProgramsMessageModalComponent } from './new-programs-message-modal/new-programs-message-modal.component';
+import { AddCommentModalComponent } from './add-comment-modal/add-comment-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +48,8 @@ import { NewProgramsMessageModalComponent } from './new-programs-message-modal/n
     ParticipateInProgramModalComponent,
     MyProgramsComponent,
     ShowProgramsMessagesComponent,
-    NewProgramsMessageModalComponent
+    NewProgramsMessageModalComponent,
+    AddCommentModalComponent
   ],
   imports: [
     FormsModule,
