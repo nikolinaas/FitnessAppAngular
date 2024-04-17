@@ -7,12 +7,12 @@ import { Injectable } from '@angular/core';
 export class UserService {
 
   getUserByAaccIdURL = "http://localhost:9000/korisnici/nalog/";
+   user : any;
   constructor(private http :  HttpClient) { }
 
   getLogedInUserById() : any{
     var userId = sessionStorage.getItem("userId");
-    return this.http.get(this.getUserByAaccIdURL + userId).pipe((data) => {
-      return data;
-    })
+    return this.http.get(this.getUserByAaccIdURL + userId);
+   
   }
 }
