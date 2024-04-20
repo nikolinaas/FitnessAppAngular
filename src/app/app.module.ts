@@ -31,6 +31,7 @@ import { SendMessageToAdvisorModalComponent } from './send-message-to-advisor-mo
 import { SendMessageToUserModalComponent } from './send-message-to-user-modal/send-message-to-user-modal.component';
 import { DatePipe } from '@angular/common';
 import { AddActivityModalComponent } from './add-activity-modal/add-activity-modal.component';
+import jspdf from 'jspdf';
 @NgModule({
   declarations: [
     AppComponent,

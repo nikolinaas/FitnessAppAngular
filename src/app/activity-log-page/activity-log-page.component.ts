@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ActivityLogService } from '../services/activity-log.service';
 import { UserService } from '../services/user.service';
 import { MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { AddActivityModalComponent } from '../add-activity-modal/add-activity-modal.component';
 import { Chart, ChartConfiguration, LineController, LineElement, PointElement, LinearScale, Title, BarController, CategoryScale } from 'chart.js';
 
+import * as jspdf from 'jspdf';
+import html2canvas from 'html2canvas';
 @Component({
   selector: 'app-activity-log-page',
   templateUrl: './activity-log-page.component.html',
@@ -13,6 +15,7 @@ import { Chart, ChartConfiguration, LineController, LineElement, PointElement, L
 export class ActivityLogPageComponent {
 
   activities : any = [];
+  contentTable  : any;
 lineChartOptions: any;
   constructor(private activityService:ActivityLogService,private userservice : UserService, private modalService : MdbModalService){
 
@@ -41,6 +44,7 @@ lineChartOptions: any;
                    data: kilos,
                    borderColor : 'black',
                    pointBackgroundColor : 'red',
+                  
                 }],
              },
              options: {
@@ -54,4 +58,75 @@ lineChartOptions: any;
   addActivity(){
     this.modalService.open(AddActivityModalComponent);
   }
+
+  @ViewChild('content', { static: false })
+  content!: ElementRef;
+  public SavePDF(): void {
+  
+    const doc = new jspdf.jsPDF();
+    const content = this.content.nativeElement;
+const contentChart = this.contentChart.nativeElement;
+
+    html2canvas(content).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const imgData2 = canvas.toDataURL('image/png');
+      const imgWidth = 210; // A4 width in mm
+      const pageHeight = 297; // A4 height in mm
+      const imgHeight = canvas.height * imgWidth / canvas.width;
+      let heightLeft = imgHeight;
+      let position = 0;
+
+      // doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+      // doc.addImage(imgData2, 'PNG', 0, position, imgWidth, imgHeight);
+      heightLeft -= pageHeight;
+
+      while (heightLeft >= 0) {
+        position = heightLeft - imgHeight;
+        doc.addPage();
+        doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+        // doc.addPage();
+        // doc.addImage(imgData2, 'PNG', 0, 1, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+      }
+
+      this.saveChart();
+      doc.save('content.pdf');
+
+ }
+   )
+  }
+
+  @ViewChild('contentChart', { static: false })
+  contentChart!: ElementRef;
+  saveChart() : void{
+
+    const doc = new jspdf.jsPDF();
+    const contentChart = this.contentChart.nativeElement;
+
+    html2canvas(contentChart).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const imgData2 = canvas.toDataURL('image/png');
+      const imgWidth = 210; // A4 width in mm
+      const pageHeight = 297; // A4 height in mm
+      const imgHeight = canvas.height * imgWidth / canvas.width;
+      let heightLeft = imgHeight;
+      let position = 0;
+
+      // doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+      // doc.addImage(imgData2, 'PNG', 0, position, imgWidth, imgHeight);
+      heightLeft -= pageHeight;
+
+      while (heightLeft >= 0) {
+        position = heightLeft - imgHeight;
+        doc.addPage();
+        doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+        // doc.addPage();
+        // doc.addImage(imgData2, 'PNG', 0, 1, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+      }
+
+      
+      doc.save('chart.pdf');
+  })}
+
 }

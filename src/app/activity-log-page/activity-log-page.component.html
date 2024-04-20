@@ -11,12 +11,13 @@
             <div class="row-container horizontal-line justify-content-center align-items-center d-flex">
                <label>Dnevnik aktivnosti</label>
             </div>
-            <div class="content p-2">
+            <div class="content p-2" >
                 <div class="row-container justify-content-end d-flex align-items-center">
                    <button class="btn" (click)="addActivity()">Dodaj aktivnost</button>
+                   <button class="btn" (click)="SavePDF()">Sacuvaj izvjestaj</button>
                 </div>
                 <div class=" div-content p-2 px-2" >
-               <table class="table table-bordered">
+               <table class="table table-bordered" id="content" #content>
                 <tr>
                     <th>Vrsta vjezbe</th>
                     <th>Trajanje(dan)</th>
@@ -43,7 +44,7 @@
                 </div>
             
                 <div class="div-content-chart px-2">
-                    <canvas class="graphic" id="graph" aria-label="chart" ></canvas>
+                    <canvas class="graphic" id="graph" aria-label="chart" #contentChart></canvas>
                   
                  
                 </div>
