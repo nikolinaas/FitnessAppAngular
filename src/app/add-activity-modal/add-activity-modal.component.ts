@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivityLogService } from '../services/activity-log.service';
 import { UserService } from '../services/user.service';
+import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-add-activity-modal',
@@ -26,6 +27,7 @@ export class AddActivityModalComponent {
         })
   }
 
+  
   onSubmit(){
 
     this.userService.getLogedInUserById().subscribe((user:any)=>{

@@ -58,13 +58,14 @@ import { AddActivityModalComponent } from './add-activity-modal/add-activity-mod
   ],
   imports: [
     FormsModule,
+    
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
     MdbModalModule
   ],
-  providers: [ DatePipe],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

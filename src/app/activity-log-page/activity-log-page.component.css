@@ -45,6 +45,10 @@
     width: 100%;
     -webkit-overflow-scrolling: touch;
 }
+.graphic{
+    height: calc(40vh - 0px);
+    width: 100%;
+}
 ::-webkit-scrollbar {
     height: 5px;
     opacity: 0.5;
