@@ -16,12 +16,16 @@ import { Observable } from 'rxjs';
 export class ProgramsPageComponent {
 
   programss : any = [];
+  searchArray : any = [];
   image : any;
   private getProgramsURL : string = "http://localhost:9000/programs";
   private getImageURL : string = "http://localhost:9000/programs/image/6";
   private downloadImgUrl = "http://localhost:9000/images/download/";
   private uploadImgUrl = "http://localhost:9000/images";
+  private categoriesUrl = "http://localhost:9000/kategorije";
+  kategorije : any = [];
   programImageUrl: any ;
+  inputValue : any = "";
   constructor(private router: Router,private modalService: MdbModalService,private http:HttpClient,private route: ActivatedRoute,private sanitizer: DomSanitizer) {
 
   }
@@ -29,11 +33,16 @@ export class ProgramsPageComponent {
   ngOnInit(){
     this.http.get(this.getProgramsURL).subscribe((data) => {
       this.programss = <Program[]>JSON.parse(JSON.stringify(data));
-       
+      this.searchArray = this.programss;
 
 
     });
+    this.http.get(this.categoriesUrl).subscribe((data) => {
+      this.kategorije = <any[]>JSON.parse(JSON.stringify(data));
+      
 
+
+    });
     console.log("bbbbbbbbbbbbb");
   }
 
@@ -54,5 +63,21 @@ export class ProgramsPageComponent {
 
   createProgramClick(){
     this.modalService.open(CreateProgramModalComponent);
+  }
+
+  search(){
+    this.programss = [];
+
+
+  }
+
+  onChange(e  :any){
+    console.log(e.target.value)
+this.programss = [];
+for(let prog of this.searchArray){
+ 
+  if(prog.kategorijaIdkategorija == e.target.value)
+  this.programss.push(prog);
+}
   }
 }

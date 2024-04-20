@@ -138,12 +138,16 @@
     .text{
         display: none;
     }
+   
 }
 @media (max-width : 1224px) {
     .card {
       width: calc(90vw - 0px);
       height: calc(100vh - 0px);
      
+    }
+    .text{
+        display: none;
     }
 }
 

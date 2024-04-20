@@ -8,12 +8,20 @@
         <div class="content p-2">
             <div class="div-buttons row-container d-flex  justify-content-space-between">
                 <div class="row-container-search">
-                    <input type="text" class="input" id="inputPassword2" placeholder="Naziv programa">
-                    <button class="btn-primary btn-class">
+                    <input type="text" class="input" [(ngModel)]="inputValue" id="searchInput" placeholder="Naziv programa">
+                    <button class="btn-primary btn-class" (click)="search()">
                         <img src="assets/search.png" class="image-class-search">
-                        <div class="text">Traži</div></button>
+                        <div  class="text">Traži</div></button>
                 </div>
-                
+                <div class="form-group py-1">
+                         
+                    <div class="dropdown attribute ">
+                       <label class="form-label px-1">Filtriraj po kategoriji: </label>
+                       <select id="location" #teams (change)="onChange($event)" class="select-class btn-class">
+                           <option *ngFor="let c of kategorije" [value]='c.idkategorija'>{{c.nazivKategorija}}</option>
+                       </select>
+                     </div>
+                    </div>
                 <button class="btn-primary btn-class" (click)="createProgramClick()">
                     <img src="assets/add.png" class="image-class-search">
                     <div class="text">Dodaj novi program</div></button>

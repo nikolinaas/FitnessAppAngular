@@ -27,7 +27,7 @@
     border-color: #004466;
     border-width: 2px;
     border-style: solid;
-    height: calc(35vh - 0px);
+    height: calc(20vh - 0px);
     width: 100%;
     -webkit-overflow-scrolling: touch;
   
@@ -41,12 +41,12 @@
     border-color: #004466;
     border-width: 2px;
     border-style: solid;
-    height: calc(40vh - 0px);
+    height: calc(55vh - 0px);
     width: 100%;
     -webkit-overflow-scrolling: touch;
 }
 .graphic{
-    height: calc(40vh - 0px);
+    height: calc(55vh - 0px);
     width: 100%;
 }
 ::-webkit-scrollbar {

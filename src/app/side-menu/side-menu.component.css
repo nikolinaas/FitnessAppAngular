@@ -70,3 +70,18 @@
     }
   
 }
+@media (max-width: 1224px) {
+   
+  
+    .fitness-app{
+        display: none;
+    }
+    .a-content{
+        display: none;
+    }
+    .image-class {
+        
+        height: calc(7vh - 5px);
+    }
+  
+}
