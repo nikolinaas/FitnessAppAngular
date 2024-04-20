@@ -85,7 +85,7 @@
     justify-content: center;
     border-radius: 10px;
     background: rgba(127, 187, 243, 0.5);
-    height: 70%;
+    height: 90%;
     width: 50%;
 }
 @media (max-width: 767px) {
@@ -93,6 +93,9 @@
       width: calc(90vw - 0px);
       height: calc(100vh - 0px);
      
+    }
+    .text {
+        display: none;
     }
 }
 

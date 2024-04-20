@@ -3,9 +3,40 @@
     <div class="home">
         <div class="row-container space-up"></div>
         <div class="row-container horizontal-line justify-content-center align-items-center d-flex">
-           <label>Poruke</label>
+            <label>Poruke</label>
         </div>
         <div class="content p-2">
+            <div class="div-buttons row-container d-flex  justify-content-space-between">
+
+
+
+                <div class="row-container-messages ">
+                    <button class="btn-primary btn-class mx-1" (click)="sendMessageToAdvisor()">
+                        <img src="assets/addmessage.png" class="image-class-search">
+                        Pošalji poruku savjetniku</button>
+                    <button class="btn-primary btn-class" (click)="sendmessageToUser()">
+                        <img src="assets/addmessage.png" class="image-class-search">
+                        Pošalji poruku korisniku</button>
+                </div>
+            </div>
+            <div class="container-fluid ">
+                <div class="row card-content-messages">
+                    <div class="card" *ngFor="let c of messages">
+                        <div class="card-header"> {{c.korisnikPosiljalacIme}} {{c.korisnikPosiljalacPrezime}}</div>
+                        <div class="card-header"> {{c.naslov}} </div>
+                        <div class="card-body">
+                            <div class="comment-content">
+                                {{c.sadrzaj}}
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
         </div>
     </div>
 </div>

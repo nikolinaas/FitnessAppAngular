@@ -52,11 +52,9 @@
     justify-content: center;
     display: flex;
     margin-top: 5px;
-    height: calc(70vh - 0px);
+    height: calc(75vh - 0px);
     border-radius: 10px;
     border-width: 2px;
-    background-repeat : no-repeat;
-    background-size: cover;
 }
 
 .div-program-card {
@@ -87,4 +85,14 @@
     color: white;
     border-radius: 10px;
     border-width: 0px;
+}
+
+.div-buttons{
+    float: right;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: calc(3vh - 0px);
+    width: 100%;
+    margin-bottom: 5px;
 }

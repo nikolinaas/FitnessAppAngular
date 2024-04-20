@@ -6,6 +6,74 @@
            <label>Nalog</label>
         </div>
         <div class="content p-2">
+            <div class="image-space"> 
+                <img src="{{GetImage(user.slikaId)}}" class="profile-img-class" />
+            </div>
+            <form [formGroup]="validationForm" (ngSubmit)="onSubmit()">
+                <div class="form-group" >
+                             <label class="form-label">Ime</label> <input
+                                 type="text" id="firstName" formControlName="firstName" [ngClass]="{'is-invalid':submitted && validationForm.controls?.['firstName']?.errors}"
+                                 class="form-control" required>
+                                 <div class="invalid-feedback"> Popunite polje validnim podacima!</div>
+                         </div>
+                         <div class="form-group">
+                             <label class="form-label">Prezime</label> <input
+                                 type="text" id="lastName" formControlName="lastName"
+                                 class="form-control" [ngClass]="{'is-invalid':submitted && validationForm.controls?.['lastName']?.errors}" required />
+                                 <div class="invalid-feedback">
+                                     Popunite polje validnim podacima!
+                                   </div>
+                         </div>
+                         <div class="form-group">
+                             <label class="form-label">Email</label> <input
+                                 type="email" id="email" formControlName="email"
+                                 class="form-control" placeholder="name@mail.com"  [ngClass]="{'is-invalid':submitted && validationForm.controls?.['email']?.errors}" required/>
+                                 <div class="invalid-feedback">
+                                     Popunite polje validnim podacima!
+                                    </div>
+                             </div>
+                         <div class="form-group">
+                             <label class="form-label">Broj telefona</label> <input
+                                 type="text" id="phoneNumber" formControlName="phoneNumber"
+                                 class="form-control" [ngClass]="{'is-invalid':submitted && validationForm.controls?.['phoneNumber']?.errors}" required
+                                 />
+                                 <div class="invalid-feedback">
+                                     Popunite polje validnim podacima!
+                                    </div>
+                         </div>
+                         <div class="form-group">
+                             <label class="form-label">Adresa</label> <input
+                                 type="text" id="address" formControlName="address"
+                                 class="form-control " [ngClass]="{'is-invalid':submitted && validationForm.controls?.['address']?.errors}" required  />
+                                 <div class="invalid-feedback">
+                                     Popunite polje validnim podacima!
+                                    </div>
+                             </div>
+                         <div class="form-group">
+                             <label class="form-label">Korisni&ccaron;ko ime</label> <input
+                            
+                                 type="text" id="username" formControlName="username"
+                                 class="form-control "   [ngClass]="{'is-invalid':submitted && validationForm.controls?.['username']?.errors}" />
+                                 <div class="invalid-feedback">
+                                     Popunite polje validnim podacima!
+                                    </div>
+                             </div>
+                         <div class="form-group">
+                             <label class="form-label">Lozinka</label> <input
+                                 type="password " id="password" formControlName="password"
+                                 class="form-control password" [ngClass]="{'is-invalid':submitted && validationForm.controls?.['password']?.errors}" required />
+                                 <div class="invalid-feedback">
+                                     Popunite polje validnim podacima!
+                                    </div>
+                             </div>
+                             <div class=" d-flex align-items-center form-group ">
+                                <label class="input px-1" for="inputGroupFile01">Promijenite avatar </label>
+                                <input type="file" class="form-control" id="image" (change)="onFileUpload($event)">
+                              </div>
+                         <div class=" d-flex form-group py-2 ">
+                             <button type="submit" class="btn" >Sačuvaj</button>
+                         </div>
+             </form>
         </div>
     </div>
 </div>

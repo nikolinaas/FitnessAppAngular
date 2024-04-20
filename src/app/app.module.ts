@@ -26,8 +26,11 @@ import { CreateProgramModalComponent } from './create-program-modal/create-progr
 import { ParticipateInProgramModalComponent } from './participate-in-program-modal/participate-in-program-modal.component';
 import { MyProgramsComponent } from './my-programs/my-programs.component';
 import { ShowProgramsMessagesComponent } from './show-programs-messages/show-programs-messages.component';
-import { NewProgramsMessageModalComponent } from './new-programs-message-modal/new-programs-message-modal.component';
 import { AddCommentModalComponent } from './add-comment-modal/add-comment-modal.component';
+import { SendMessageToAdvisorModalComponent } from './send-message-to-advisor-modal/send-message-to-advisor-modal.component';
+import { SendMessageToUserModalComponent } from './send-message-to-user-modal/send-message-to-user-modal.component';
+import { DatePipe } from '@angular/common';
+import { AddActivityModalComponent } from './add-activity-modal/add-activity-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,8 +51,10 @@ import { AddCommentModalComponent } from './add-comment-modal/add-comment-modal.
     ParticipateInProgramModalComponent,
     MyProgramsComponent,
     ShowProgramsMessagesComponent,
-    NewProgramsMessageModalComponent,
-    AddCommentModalComponent
+    AddCommentModalComponent,
+    SendMessageToAdvisorModalComponent,
+    SendMessageToUserModalComponent,
+    AddActivityModalComponent
   ],
   imports: [
     FormsModule,
@@ -59,7 +64,7 @@ import { AddCommentModalComponent } from './add-comment-modal/add-comment-modal.
     HttpClientModule,
     MdbModalModule
   ],
-  providers: [],
+  providers: [ DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

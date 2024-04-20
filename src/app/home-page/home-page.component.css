@@ -128,3 +128,8 @@
     color: #004466;
     white-space: pre-line; 
 }
+@media (max-width: 767px) {
+    .news-card{
+        width: 100%;
+    }
+}

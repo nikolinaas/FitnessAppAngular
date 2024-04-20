@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { Kategorija } from '../model/Kategorija';
 import { Observable } from 'rxjs';
+import { LogService } from '../services/log.service';
 
 @Component({
   selector: 'app-create-program-modal',
@@ -25,13 +26,14 @@ export class CreateProgramModalComponent {
    categoryId : any;
    isOnline : boolean = false;
    isLive : boolean = false;
-  constructor(public modalRef: MdbModalRef<CreateProgramModalComponent>,private modalService: MdbModalService, private http : HttpClient,  private formBuilder:FormBuilder){
+  constructor(private logService:LogService, public modalRef: MdbModalRef<CreateProgramModalComponent>,private modalService: MdbModalService, private http : HttpClient,  private formBuilder:FormBuilder){
   this.validationForm = this.formBuilder.group({
   programName :['',[Validators.required, Validators.minLength(1)]],
   programDescription :['',[Validators.required, Validators.minLength(1)]],
   price:['', [Validators.required, Validators.minLength(1)]],
   duration: ['', [Validators.required, Validators.minLength(1)]],
-  difficulty: ['', [Validators.required, Validators.minLength(1)]]
+  difficulty: ['', [Validators.required, Validators.minLength(1)]],
+  video: ['', [Validators.required, Validators.minLength(1)]]
     })
   }
 
@@ -65,10 +67,10 @@ export class CreateProgramModalComponent {
         slikaId : (data as any).id,
         online : this.isOnline,
         uzivo : this.isLive,
-        nazivPrograma : this.validationForm.get( 'programName')?.value
-
+        nazivPrograma : this.validationForm.get( 'programName')?.value,
+        video : this.validationForm.get( 'video')?.value
         }
-
+        this.logService.addLog("Kreiranje novog programa!" + this.validationForm.get( 'programName')?.value );
         this.http.post(this.postProgramURL,program).subscribe((data) => {
           console.log(data);
         })
@@ -103,12 +105,16 @@ console.log(this.categoryId)
 
   onItemChangeIsOnline(target : any){
     if(target.value)
-    this.isOnline = true;
+   { this.isOnline = true;
+    this.isLive = false;}
     console.log(this.isOnline);
   }
 
   onItemChangeIsLive(target : any){
-    if(target.value)
-    this.isLive = true;
+    if(target.value){
+      this.isLive = true;
+      this.isOnline = false;
+    }
+
   }
 }

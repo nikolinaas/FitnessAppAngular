@@ -18,17 +18,91 @@
     color: white;
     font-size: 24px;
 }
-.div-content {
-    overflow-x: auto;
-    position: relataive;
-    overflow-y: hidden;
-    white-space: nowrap;
-    border-radius: 10px;
-    border-color: #004466;
-    border-width: 2px;
-    border-style: solid;
-    height: calc(35vh - 0px);
+
+.form-group{
+   padding: 0px;
     width: 100%;
-    -webkit-overflow-scrolling: touch;
+  }
+
+.btn {
+	font-size: 24px;
+	background-color:#004466;
+    color: white;
+}
+
+.btn:hover {
+	background-color: #81b9df;
+}
+.container {
+    width: 100%;
+    display: flex;
+  }
+  .form-control{
+    padding: 0px;
+    display: flex;
+  }
+  .forma{
+    justify-content: center;
+    display: flex;
+  }
+ .image-space{
+  height: calc(10vh - 0px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+ @media (max-width: 767px) {
+  .form-control {
+     width: 100%;
+     height: 100%;
+     padding: 0px;
+   
+  }
+}
+@media (max-width: 767px) {
+  .form-group {
+      width: 100%;
+      height: 100%;
+      padding: 0px;
+   
+  }
+}
+@media (max-width: 767px) {
+  .form-label {
+      width: 100%;
+      height: 100%;
+      padding: 0px;
+   
+  }
   
+}
+@media (max-width: 767px) {
+
+  .input-group {
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+ 
+}
+}
+@media (max-width: 767px) {
+
+  .image-space{
+    height: calc(6vh - 0px);
+    
+   }
+}
+
+@media (max-width: 767px) {
+
+  .profile-img-class{
+    height: 10px;
+  }
+}
+
+.profile-img-class{
+  border-radius: 100%;
+  border-style: none;
+  height: calc(10vh - 0px);
+  width: calc(8vw - 0px);
 }

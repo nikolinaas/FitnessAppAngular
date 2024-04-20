@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { Nalog } from '../model/Nalog';
 import {NgAlertBoxComponent, NgAlertBoxService} from "ng-alert-box-popup";
 import swal from 'sweetalert2';
+import { LogService } from '../services/log.service';
 
 @Component({
   selector: 'app-log-in',
@@ -25,7 +26,7 @@ private editAccountURL : string = "http://localhost:9000/nalozi/";
 private sendEmailURL:string = "http://localhost:9000/api/mail/send";
 private idOfPage : any;
 
-  constructor(private alerts: NgAlertBoxService,private router: Router,private modalService: MdbModalService,private formBuilder:FormBuilder,private http:HttpClient,private route: ActivatedRoute) {
+  constructor(private logService: LogService, private alerts: NgAlertBoxService,private router: Router,private modalService: MdbModalService,private formBuilder:FormBuilder,private http:HttpClient,private route: ActivatedRoute) {
     this.validationForm = this.formBuilder.group({
       username :['',[Validators.required, Validators.minLength(1)]],
       password :['',[Validators.required, Validators.minLength(1)]]})
@@ -92,6 +93,7 @@ showInfoAlert(msg  :string){
             sessionStorage.setItem("isLoggedIn",'true');
             sessionStorage.setItem("userId", (data as any).id);
             this.router.navigate(['/home']);
+            this.logService.addLog("Uspjesna prijava na nalog korisnika" + this.nalog.korisnickoIme);
           }else{
             if(this.idOfPage==1){
               this.modalService.open(CheckActivationcodeModalComponent,{ data: { id: this.nalog.id }});
@@ -120,8 +122,10 @@ showInfoAlert(msg  :string){
         }
    
         
-        
-       else this.showErrorAlert("Prijava nije moguća, nalog sa navedenim kredencijalima ne postoji!");
+       
+       else {this.showErrorAlert("Prijava nije moguća, nalog sa navedenim kredencijalima ne postoji!");
+       this.logService.addLog("Neuspjesan pokusaj prijave!" );
+      }
       })
   
   

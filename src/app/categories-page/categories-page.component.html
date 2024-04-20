@@ -3,9 +3,55 @@
     <div class="home">
         <div class="row-container space-up"></div>
         <div class="row-container horizontal-line justify-content-center align-items-center d-flex">
-           <label>Kategorije</label>
+            <label>Kategorije</label>
         </div>
-        <div class="content p-2">
+        <div class="content p-2 ">
+            <div class="div-buttons row-container d-flex  justify-content-space-between">
+
+
+
+            </div>
+            <div class="title">Dostupne kategorjie: </div>
+            <div class="container-fluid ">
+                <div class="row card-content-messages">
+
+                    <div class="card" *ngFor="let c of   categories">
+                        <div class="card-header"> {{c.nazivKategorija}}
+                            <button class="btn-class" (click)="subscribeToCategory(c.idkategorija)">Pretplati se</button>
+                        </div>
+                        <div class="card-content">
+                            <div class="comment-content">
+                                {{c.opisKategorije}}
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="title">Moje kategorjie: </div>
+            <div class="container-fluid ">
+                <div class="row card-content-messages">
+
+                    <div class="card" *ngFor="let c of   myCategories">
+                        <div class="card-header"> {{c.nazivKategorija}}
+                          
+                        </div>
+                        <div class="card-content">
+                            <div class="comment-content">
+                                {{c.opisKategorije}}
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
         </div>
     </div>
-</div>

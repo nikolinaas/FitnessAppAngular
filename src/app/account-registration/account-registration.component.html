@@ -65,7 +65,11 @@
                                     <div class="invalid-feedback">
                                         Popunite polje validnim podacima!
                                        </div>
-                                </div>
+                                </div> 
+                                <div class=" d-flex align-items-center form-group py-2">
+                                    <label class="input px-1" for="inputGroupFile01">Dodajte sliku </label>
+                                    <input type="file" class="form-control" id="image" (change)="onFileUpload($event)">
+                                  </div>
                             <div class="form-group py-2 ">
                                 <button type="submit" class="btn" >Registrujte se</button>
                             </div>

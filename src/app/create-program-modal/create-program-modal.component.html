@@ -54,7 +54,7 @@
                          <div class="dropdown">
                             <label class="form-label px-1">Kategorija: </label>
                             <select id="category" #teams (change)="getSelectedCategory($event)"  class="select-class">
-                                <option *ngFor="let c of categories" [value]='c.idkategorija'>{{c.nazivKategorija}} : {{c.opisKategorije}}</option>
+                                <option *ngFor="let c of categories" [value]='c.idkategorija'>{{c.nazivKategorija}} </option>
                             </select>
                           </div>
                              <div class="invalid-feedback">
@@ -79,6 +79,14 @@
                                   Online
                                 </label>
                               </div>
+                              <div class="form-group" *ngIf="isOnline">
+                                <label class="form-label">URL YouTube</label> <input
+                                    type="text" id="video" formControlName="video"
+                                    class="form-control"  [ngClass]="{'is-invalid':submitted && validationForm.controls?.['video']?.errors}" required/>
+                                    <div class="invalid-feedback">
+                                        Popunite polje validnim podacima!
+                                       </div>
+                                </div>
                               <div class="form-check">
                                 <input class="form-check-input" type="radio" name="online" id="live" (change)="onItemChangeIsLive($event.target)">
                                 <label class="form-check-label" for="flexRadioDefault1">
@@ -89,6 +97,7 @@
                                 <label class="input px-1" for="inputGroupFile01">Dodajte sliku </label>
                                 <input type="file" class="form-control" id="image" (change)="onFileUpload($event)">
                               </div>
+
                      <div class="form-group py-2 ">
                          <button type="submit" class="btn btn-primary" >Kreiraj program</button>
                      </div>

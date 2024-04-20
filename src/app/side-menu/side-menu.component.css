@@ -55,3 +55,18 @@
     height: calc(8vh - 5px);
     width: calc(4vw - 5px);
 }
+@media (max-width: 767px) {
+   
+  
+    .fitness-app{
+        display: none;
+    }
+    .a-content{
+        display: none;
+    }
+    .image-class {
+        
+        height: calc(7vh - 5px);
+    }
+  
+}

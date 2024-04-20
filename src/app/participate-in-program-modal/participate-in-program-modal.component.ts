@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 
 @Component({
@@ -14,7 +15,7 @@ export class ParticipateInProgramModalComponent {
   getPayingMethodByIdURL : string = "http://localhost:9000/payingmethods/";
   postParticipationsURL : string = "http://localhost:9000/participations";
   getUserByccIdURL : string = "http://localhost:9000/korisnici/nalog/";
-
+  participationGroup  :any;
   selectedPayingMethod : any;
   payingMethodId :any;
   programId : any ;
@@ -22,12 +23,23 @@ export class ParticipateInProgramModalComponent {
   isPayPal : boolean = false;
   myGroup : any;
   myGroupPayPal : any;
-  constructor(private modalService:MdbModalService, public modalRef: MdbModalRef<ParticipateInProgramModalComponent>, private http : HttpClient){
+  isChecked  :boolean =false;
+  userID : any;
+  constructor(private modalService:MdbModalService, public modalRef: MdbModalRef<ParticipateInProgramModalComponent>, private http : HttpClient, private formBuilder : FormBuilder){
+this.participationGroup = this.formBuilder.group({
 
+})
   }
   ngOnInit(){
 
-   
+    var userId = sessionStorage.getItem("userId");
+   console.log(userId)
+
+    this.http.get(this.getUserByccIdURL + userId).subscribe((data) => {
+      console.log(data)
+this.userID = (data as any).id;
+    })
+
     this.http.get(this.getPayingMethodsURL).subscribe((data) => {
 
       this.payingMethods = data;
@@ -42,16 +54,14 @@ export class ParticipateInProgramModalComponent {
   }
 
   onSubmit(){
-    var userId = sessionStorage.getItem("userId");
+
    
 
-    this.http.get(this.getUserByccIdURL + userId).subscribe((data) => {
-console.log((data as any).id);
       var participation = {
-        korisnikId : (data as any).id,
+        korisnikId : this.userID,
         programIdProgram : this.programId,
         nacinPlacanjaIdnacinPlacanja : this.payingMethodId,
-        instruktor : false,
+        instruktor : this.isChecked,
         aktivno : true
   
       }
@@ -60,7 +70,7 @@ console.log((data as any).id);
         console.log(data);
       });
   
-    });
+   
 
    
    
@@ -84,5 +94,8 @@ console.log((data as any).id);
         this.isPayPal = false;
       }
     });
+  }
+  onItemChangeIsInstruktor(e : any){
+
   }
 }

@@ -19,9 +19,9 @@
     font-size: 24px;
 }
 .div-content {
-    overflow-x: auto;
+    overflow-x: hidden;
     position: relataive;
-    overflow-y: hidden;
+    overflow-y: auto;
     white-space: nowrap;
     border-radius: 10px;
     border-color: #004466;
@@ -32,3 +32,57 @@
     -webkit-overflow-scrolling: touch;
   
 }
+.div-content-chart{
+    overflow-x: auto;
+    position: relataive;
+    overflow-y: auto;
+    white-space: nowrap;
+    border-radius: 10px;
+    border-color: #004466;
+    border-width: 2px;
+    border-style: solid;
+    height: calc(40vh - 0px);
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+}
+::-webkit-scrollbar {
+    height: 5px;
+    opacity: 0.5;
+    width: 8px;
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    opacity: 0.5;
+    width: 8px;
+    background-color: #004466;
+    border-radius: 10px;
+
+  }
+.content {
+    width: 100%;
+}
+.space-cards {
+    height: calc(2vh - 0px);
+}
+
+.label-edit {
+    color: #004466;
+    font-size: 18px;
+}
+.btn {
+	
+	background-color: #004466;
+    color: white;
+}
+
+
+.trclass:hover {
+	background-color: #81b9df;
+	color: white;
+}
+
+tr {
+	font-size: 16px;
+}
+

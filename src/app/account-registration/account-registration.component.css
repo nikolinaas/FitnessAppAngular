@@ -12,14 +12,14 @@
 @media (max-width: 767px) {
     .cardLogIn {
       width: calc(90vw - 0px); 
-      height: calc(90vh - 0px);
+      height: calc(95vh - 0px);
      
     }
 }
 @media (max-width: 767px) {
     .card-header {
       width: calc(90vw - 0px); 
-      height: calc(30vh - 0px);
+      height: calc(10vh - 0px);
      
     }
 }
@@ -48,6 +48,12 @@
 }
 @media (max-width: 767px) {
     .form-label {
+        width: 100%;
+        height: 100%;
+        padding: 0px;
+     
+    }
+    .input-group {
         width: 100%;
         height: 100%;
         padding: 0px;

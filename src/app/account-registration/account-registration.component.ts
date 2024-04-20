@@ -6,6 +6,7 @@ import { KorisnikRequest } from '../model/KorisnikRequest';
 import { waitForAsync } from '@angular/core/testing';
 import { NalogRequest } from '../model/NalogRequest';
 import { Nalog } from '../model/Nalog';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -19,10 +20,11 @@ export class AccountRegistrationComponent {
   private sendEmailURL:string = "http://localhost:9000/api/mail/send";
   private createAccURL : string = "http://localhost:9000/nalozi";
   private createUserURL :string = "http://localhost:9000/korisnici";
+  private uploadImgUrl = "http://localhost:9000/images/upload";
 
   validationForm!: FormGroup;
   submitted= false;
-
+  file : any;
   constructor(private router: Router, private formBuilder:FormBuilder, private http:HttpClient) {
     
     this.validationForm = this.formBuilder.group({
@@ -52,7 +54,9 @@ export class AccountRegistrationComponent {
   }
 
 onSubmit(){
+
 var aktivKod = this.randomString();
+
 if(!this.validationForm.invalid){
   console.log("validnooooooo");
   this.submitted = true;
@@ -67,29 +71,33 @@ if(!this.validationForm.invalid){
   var id :number = 0;
   this.http.post(this.createAccURL, nalogRequest).subscribe((data)=> {
 
-    if(data !== null){
-      korisnikRequest = {
-        ime: this.validationForm.get( 'firstName')?.value,
-        prezime: this.validationForm.get( 'lastName')?.value,
-        email: this.validationForm.get( 'email')?.value,
-        brojTelefona:this.validationForm.get( 'phoneNumber')?.value,
-        adresa: this.validationForm.get( 'address')?.value,
-        nalogIdnalog :(data as any).id,
-        aktivacioniKod : aktivKod
+    this.uploadImage(this.file).subscribe((dataSlika) => {
+      if(data !== null){
+        korisnikRequest = {
+          ime: this.validationForm.get( 'firstName')?.value,
+          prezime: this.validationForm.get( 'lastName')?.value,
+          email: this.validationForm.get( 'email')?.value,
+          brojTelefona:this.validationForm.get( 'phoneNumber')?.value,
+          adresa: this.validationForm.get( 'address')?.value,
+          slikaId : (dataSlika as any).id,
+          nalogIdnalog :(data as any).id,
+          aktivacioniKod : aktivKod
+        }
+      var  mailReq : any = {
+          aktivacioniKod : aktivKod
+        }
+        this.http.post(this.createUserURL, korisnikRequest).subscribe((data) => {});
+        this.http.post(this.sendEmailURL, korisnikRequest).subscribe((data)=> {});
+        alert("Nalog je kreiran, kreiranje naloga potvrdite na mail-u i aktivirajte nalog!")
+      }else{
+    
+        this.validationForm.get('username')?.setErrors({
+          notUnique: true
+        });
+        alert("Nije moguce kreirati nalog sa vec postojecim korisnicikim imenom!")
       }
-    var  mailReq : any = {
-        aktivacioniKod : aktivKod
-      }
-      this.http.post(this.createUserURL, korisnikRequest).subscribe((data) => {});
-      this.http.post(this.sendEmailURL, korisnikRequest).subscribe((data)=> {});
-      alert("Nalog je kreiran, kreiranje naloga potvrdite na mail-u i aktivirajte nalog!")
-    }else{
-  
-      this.validationForm.get('username')?.setErrors({
-        notUnique: true
-      });
-      alert("Nije moguce kreirati nalog sa vec postojecim korisnicikim imenom!")
-    }
+    })
+
 
   });
   
@@ -102,5 +110,15 @@ if(!this.validationForm.invalid){
    
     this.router.navigate(['/home']);
   }
-
+  onFileUpload(event  :any){
+    if(event.target.files.length > 0){
+      this.file = event.target.files[0];
+    }
+    console.log(this.file);
+  }
+  public uploadImage(url: any): Observable<any> {
+    const formData = new FormData();
+    formData.append("image", url);
+    return this.http.post(this.uploadImgUrl, formData);
+  }
 }

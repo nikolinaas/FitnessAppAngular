@@ -15,10 +15,10 @@
                     <div class="row-container-messages ">
                         <button class="btn-primary btn-class mx-1" (click)="addComment()">
                             <img src="assets/addmessage.png" class="image-class-search">
-                           Dodaj komentar</button>
+                            <div class="text"> Dodaj komentar</div></button>
                             <button class="btn-primary btn-class" (click)="showProgramsMessages()">
                                 <img src="assets/messages.png" class="image-class-search">
-                                Pogledaj komentare</button>
+                               <div class="text">Pogledaj komentare</div> </button>
                     </div>
                     
                
@@ -34,9 +34,21 @@
                         <div class="div-details"><b>Trajanje: </b>{{program.trajanje}}</div>
                         <div class="div-details"><b>Lokacija odrzavnja: </b>{{program.lokacijaOdrzavanjaNazivLokacije}}</div>
                         <div class="div-details"><b>Kategorija: </b>{{program.kategorijaNazivKategorija}}</div>
-                        <div class="div-details"><b>Opis kategorije: </b>{{program.kategorijaOpisKategorije}}</div>    
+                        <div class="div-details"><b>Opis kategorije: </b>{{program.kategorijaOpisKategorije}}</div>
+                        <div class="div-details"><b>Instruktori: </b></div>   
+                        <div class="div-details" *ngFor="let i of instruktori">
+                            <div class="div-details px-3"><b>Ime i prezime: </b>{{i.ime}} {{i.prezime}}</div>
+                            <div class="div-details px-3"><b>Email: </b>{{i.email}}</div>
+                        </div> 
+                        <div class="div-details" *ngIf="isOnline">
+                            <iframe  [src]='  getUrl(program.video) '  width="320" height="240" controls allowfullscreen>
+                                 
+                            </iframe >
+                        </div>
                     </div>
+                    
                 </div>
+                
             </div>
 
         
