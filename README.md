@@ -25,3 +25,21 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Application layout
+
+
+![slika1](https://github.com/nikolinaas/FitnessAppAngular/assets/77556327/334e16a1-cdd5-4e8a-ace5-abe495536491)
+![slika7](https://github.com/nikolinaas/FitnessAppAngular/assets/77556327/e29bf93e-51f9-42fd-910c-66216393008c)
+![slika22](https://github.com/nikolinaas/FitnessAppAngular/assets/77556327/4ec6fd51-5fb6-4412-8289-659c8ad9cc59)
+
+![slika3](https://github.com/nikolinaas/FitnessAppAngular/assets/77556327/45d00153-ecc9-4c10-a409-72aa4e50615e)
+
+![slika5](https://github.com/nikolinaas/FitnessAppAngular/assets/77556327/c50a7621-013c-4ccd-8678-6e94b334191f)
+
+
+![slika4](https://github.com/nikolinaas/FitnessAppAngular/assets/77556327/b5da024d-5267-45f4-946b-9cbbe832d0a1)
+
+![slika6](https://github.com/nikolinaas/FitnessAppAngular/assets/77556327/368caa8c-839b-45f6-ae82-f38b2e87ba09)
+
+
